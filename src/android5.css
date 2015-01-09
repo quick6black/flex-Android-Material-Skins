@@ -164,6 +164,7 @@ HScrollBar
 {
 	skinClass: ClassReference("spark.skins.android5.HScrollBarSkin");
 	thumbColor: #009688;
+	thumbAlpha: .8;
 }
 
 List
@@ -175,8 +176,9 @@ List
 
 VScrollBar
 {
-	skinClass: ClassReference("spark.skins.android5.VScrollBarSkin");
+	skinClass: ClassReference("spark.skins.android5.HScrollBarSkin");
 	thumbColor: #009688;
+	thumbAlpha: .8;
 }
 
 

@@ -29,7 +29,11 @@ package spark.skins.android5
 	use namespace mx_internal;
 	
 	import spark.components.Button;
-	import spark.skins.mobile.supportClasses.MobileSkin;
+	import spark.skins.mobile.supportClasses.MobileSkin;	
+
+	
+	[Style(name="thumbColor", type="uint", format="Color", inherit="yes")]
+	[Style(name="thumbAlpha", type="Number", format="Length", inherit="yes")]
 	
 	/**
 	 *  ActionScript-based skin for the VScrollBar thumb skin part in mobile applications. 
@@ -167,8 +171,9 @@ package spark.skins.android5
 			super.drawBackground(unscaledWidth, unscaledHeight);
 			
 			var thumbWidth:Number = unscaledWidth - paddingRight;
-			var contentBackgroundColor:uint = getStyle("thumbColor");
-			graphics.beginFill(contentBackgroundColor, .5);
+			var thumbColor:uint = getStyle("thumbColor");
+			var thumbAlpha:Number = getStyle("thumbAlpha");
+			graphics.beginFill(thumbColor, thumbAlpha);
 			graphics.drawRect(0.5, paddingVertical + 0.5,thumbWidth, unscaledHeight - 2 * paddingVertical);		
 			graphics.endFill();
 		}

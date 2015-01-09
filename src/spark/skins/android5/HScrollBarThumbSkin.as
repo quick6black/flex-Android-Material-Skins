@@ -32,6 +32,9 @@ package spark.skins.android5
 	
 	use namespace mx_internal;
 	
+	[Style(name="thumbColor", type="uint", format="Color", inherit="yes")]
+	[Style(name="thumbAlpha", type="Number", format="Length", inherit="yes")]
+	
 	/**
 	 *  ActionScript-based skin for the HScrollBar thumb skin part in mobile applications. 
 	 * 
@@ -159,8 +162,9 @@ package spark.skins.android5
 			super.drawBackground(unscaledWidth, unscaledHeight);
 			
 			var thumbHeight:Number = unscaledHeight - paddingBottom;
-			var contentBackgroundColor:uint = getStyle("thumbColor");
-			graphics.beginFill(contentBackgroundColor, .5);
+			var thumbColor:uint = getStyle("thumbColor");
+			var thumbAlpha:Number = getStyle("thumbAlpha");
+			graphics.beginFill(thumbColor, thumbAlpha);
 			graphics.drawRect(paddingHorizontal + .5, 0.5, unscaledWidth - 2 * paddingHorizontal, thumbHeight);
 			
 			graphics.endFill();
