@@ -111,7 +111,7 @@ RadioButton
 	backgroundAlpha: 0; /*background alpha*/
 	chromeColor: #000000; /*background color*/
 	selectColor: #009688; 
-	unselectColor: #000000;
+	unselectColor: #6D6D6D;
 }
 
 ToggleSwitch
