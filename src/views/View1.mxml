@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="Test View 1" actionBarVisible="true"> 
+	
+	
+	<fx:Script>
+		<![CDATA[
+			
+			protected var fps : uint;
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<s:MultiDPIBitmapSource id="overflowIcon" 
+								source160dpi="@Embed('assets/160/search.png')" 
+								source240dpi="@Embed('assets/240/search.png')"
+								source480dpi="@Embed('assets/480/search.png')"/>
+	</fx:Declarations>
+	<s:actionContent>
+		<s:Button icon="{overflowIcon}"/>
+	</s:actionContent>
+	<s:navigationContent>
+		<s:Button label="Left"/>
+	</s:navigationContent>
+	<fx:Declarations>
+		<s:RadioButtonGroup id="mygroup"/>
+	</fx:Declarations>
+	<s:Scroller width="100%" height="100%">	
+		<s:VGroup width="100%" height="100%" horizontalAlign="center">	
+			<s:Spacer height="10"/>
+			<s:Button label="Raised" left="100" color="0xFFFFFF"/>
+			<s:Button label="Flat" left="100" color="0x000000" styleName="flat"/>
+			<s:Button left="100" color="0x000000" styleName="circle" icon="{overflowIcon}"/>
+			<s:Spacer height="10"/>
+			<s:RadioButton label="Radio" groupName="mygroup"/>
+			<s:RadioButton label="Television" groupName="mygroup"/>
+			<s:Label text="{mygroup.selectedValue}"/>
+			<s:CheckBox label="Check me!" iconPlacement="right"/>
+			<s:Spacer height="10"/>
+			<s:ToggleSwitch label="ToggleSwitch" color="0x000000" id="toggleSwitch" />
+			<s:Label text="{toggleSwitch.selected}"/>
+			<s:VGroup width="100%" height="100%" horizontalAlign="center">
+				<s:TextInput prompt="TextInput"/>
+				<s:TextArea prompt="TextArea"/>			
+				<s:HSlider width="100%" snapInterval="0" minimum="0" maximum="100"/>
+			</s:VGroup>
+		</s:VGroup>
+	</s:Scroller>
+	<s:viewMenuItems>
+		<s:ViewMenuItem id="streetMap" label="Street Map" color="#000000" width="150"/>
+		<s:ViewMenuItem id="aerialMap" label="Aerial Map" color="#000000" width="150"/>	
+		<s:ViewMenuItem label="Clear Graphic" color="#000000" width="150"/>
+		<s:ViewMenuItem label="Close Program" color="#000000" width="150"/>
+		<s:ViewMenuItem label="Clear Graphic" color="#000000" width="150"/>
+		<s:ViewMenuItem label="Close Program" color="#000000" width="150"/>
+		<s:ViewMenuItem label="Clear Graphic" color="#000000" width="150"/>
+		<s:ViewMenuItem label="Close Program" color="#000000" width="150"/>
+	</s:viewMenuItems>
+</s:View>

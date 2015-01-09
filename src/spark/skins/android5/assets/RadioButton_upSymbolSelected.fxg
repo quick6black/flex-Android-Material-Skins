@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+-->
+
+<Graphic xmlns="http://ns.adobe.com/fxg/2008" version="2.0" viewWidth="32" viewHeight="32">
+	<Group>
+		<Group>
+			<transform>
+				<Transform>
+					<matrix>
+						<Matrix a="0.88453012" b="0" c="0" d="0.88801937" tx="1.83" ty="1.78"/>
+					</matrix>
+				</Transform>
+			</transform>
+			<Path data="m 24.058979 16.008041 c 0 4.420417 -3.597592 8.003873 -8.035446 8.003873 -4.437855 0 -8.0354463 -3.583456 -8.0354463 -8.003873 0 -4.420417 3.5975913 -8.0038725 8.0354463 -8.0038725 4.437854 0 8.035446 3.5834555 8.035446 8.0038725 z" winding="nonZero">
+				<stroke>
+					<SolidColorStroke color="#009688" alpha="0" weight="2" miterLimit="4" joints="miter" caps="round"/>
+				</stroke>
+			</Path>
+		</Group>
+		<Group>
+			<transform>
+				<Transform>
+					<matrix>
+						<Matrix a="1.171012" b="0" c="0" d="1.0793062" tx="-2.85" ty="-1.09"/>
+					</matrix>
+				</Transform>
+			</transform>
+			<Path data="m 19.512758 15.836114 c 0 2.046814 -1.529328 3.706084 -3.415849 3.706084 -1.886522 0 -3.415849 -1.65927 -3.415849 -3.706084 0 -2.046814 1.529327 -3.706085 3.415849 -3.706085 1.886521 0 3.415849 1.659271 3.415849 3.706085 z" winding="evenOdd" id="path3895">
+				<fill>
+					<SolidColor color="#009688" alpha="0"/>
+				</fill>
+			</Path>
+		</Group>
+	</Group>
+</Graphic>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+-->
+
+<Graphic xmlns="http://ns.adobe.com/fxg/2008" version="2.0" viewWidth="32" viewHeight="32">
+	<Group>
+		<Path data="m 9.8222818 8.8827085 12.3554382 0 c 0.520523 0 0.939571 0.389403 0.939571 0.8731007 l 0 12.4883798 c 0 0.483698 -0.419048 0.873101 -0.939571 0.873101 l -12.3554382 0 c -0.5205225 0 -0.9395713 -0.389403 -0.9395713 -0.873101 l 0 -12.4883798 c 0 -0.4836977 0.4190488 -0.8731007 0.9395713 -0.8731007 z" winding="nonZero" id="rect3831">
+			<fill>
+				<SolidColor color="#009688" alpha="1"/>
+			</fill>
+			<stroke>
+				<SolidColorStroke color="#009688" alpha="1" weight="2" miterLimit="4" joints="round" caps="round"/>
+			</stroke>
+		</Path>
+		<Path data="m 10.545537 15.423932 3.796709 3.796709 7.325044 -7.325044" winding="nonZero" id="path3849">
+			<stroke>
+				<SolidColorStroke color="#FFFFFF" alpha="1" weight="2" miterLimit="4" joints="miter" caps="round"/>
+			</stroke>
+		</Path>
+	</Group>
+</Graphic>

@@ -1,0 +1,261 @@
+/* CSS file */
+@namespace "library://ns.adobe.com/flex/spark";
+
+/*Roboto Fonts*/
+@font-face {
+	src: url("/spark/skins/android5/assets/fonts/Roboto-Regular.ttf");
+	fontFamily: RobotoRegular;
+	embed-as-cff: false;
+}
+
+@font-face {
+	src: url("/spark/skins/android5/assets/fonts/Roboto-Bold.ttf");
+	fontFamily: RobotoBold;
+	fontWeight: bold;
+	embed-as-cff: false;
+}
+
+global
+{
+	fontFamily: RobotoRegular;
+	fontSize: 24;
+	color: #000000;
+
+	
+}
+ActionBar
+{
+	chromeColor: #009688;
+	skinClass: ClassReference("spark.skins.android5.ActionBarSkin");
+	paddingBottom: 0;
+	paddingLeft: 0;
+	paddingRight: 0;
+	paddingTop: 0;
+	dropshadowVisible: true;
+}
+
+ActionBar #titleDisplay
+{
+	color: #FFFFFF;
+	fontSize: 24;
+	fontFamily: RobotoBold;
+}
+
+ActionBar ButtonBase
+{
+	color: #333333;
+	fontFamily: RobotoBold;
+	fontWeight: bold;
+}
+
+ActionBar Group#actionGroup Button
+{
+	skinClass: ClassReference("spark.skins.android5.TransparentActionButtonSkin");
+	chromeColor: #009688;
+	downColor: #b9b8b8;
+	downAlpha: 0.7;
+	color: #FFFFFF;
+}
+
+ActionBar Group#navigationGroup Button
+{
+	skinClass: ClassReference("spark.skins.android5.TransparentNavigationButtonSkin");
+	chromeColor: #009688;
+	downColor: #b9b8b8;
+	downAlpha: 0.7;
+	color: #FFFFFF;
+}
+
+Button
+{
+	fontFamily: RobotoBold;
+	fontWeight: "bold";
+	contentBackgroundBorder: "raised";
+	skinClass: ClassReference("spark.skins.android5.ButtonSkin");
+	chromeColor: #009688;
+	downColor: #b9b8b8;
+	downAlpha: 0.7;
+}
+
+Button.flat
+{
+	fontFamily: RobotoBold;
+	fontWeight: "bold";
+	contentBackgroundBorder: "flat";
+	skinClass: ClassReference("spark.skins.android5.ButtonSkin");
+	chromeColor: #009688;
+	downColor: #b9b8b8;
+	downAlpha: 0.7;
+}
+
+Button.circle
+{
+	fontFamily: RobotoBold;
+	fontWeight: "bold";
+	contentBackgroundBorder: "circle";
+	skinClass: ClassReference("spark.skins.android5.ButtonSkin");
+	chromeColor: #009688;
+	downColor: #b9b8b8;
+	downAlpha: 0.7;
+}
+
+CheckBox
+{
+	skinClass: ClassReference("spark.skins.android5.CheckBoxSkin");
+	chromeColor: #FFFFFF;
+}
+
+RadioButton
+{
+	skinClass: ClassReference("spark.skins.android5.RadioButtonSkin");
+	backgroundAlpha: 0; /*background alpha*/
+	chromeColor: #000000; /*background color*/
+	selectColor: #009688; 
+	unselectColor: #000000;
+}
+
+ToggleSwitch
+{
+	skinClass: ClassReference("spark.skins.android5.ToggleSwitchSkin");
+	thumbColor: #FFFFFF; /*color of the thumb in the left unselected position*/
+	thumbColorSelected: #009688; /*color of the thumb in the right selected position*/
+	trackColor: #b9b8b8;
+	trackColorSelected: #77c2bb;	
+	slideDuration: 125;
+}
+
+HSlider
+{
+	skinClass: ClassReference("spark.skins.android5.HSliderSkin");		
+	symbolColor: #009688; /*color of the center circle*/
+	selectionColor:#000000; /*color of the larger semi-transparent circle when selected*/
+	trackColor:#b0b0b0; /*color track*/
+	trackselectionColor: #009688; /*color track when dragged*/
+}
+
+TextInput
+{
+	skinClass: ClassReference("spark.skins.android5.StageTextInputSkin");
+	contentBackgroundAlpha: 0;
+	focusColor: #009688;
+	borderColor: #4e4e4e;
+	contentBackgroundColor: #DEDEDD;
+	contentBackgroundBorder: "flat";
+	fontFamily: RobotoRegular;
+	selectionHighlighting: "never";
+	focusEnabled:"false";
+	focusThickness: 0;
+}
+
+TextArea
+{
+	skinClass: ClassReference("spark.skins.android5.StageTextAreaSkin");
+	contentBackgroundAlpha: 0;
+	contentBackgroundBorder: "flat";
+	contentBackgroundColor: #DEDEDD;
+	focusColor: #009688;
+	borderColor: #4e4e4e;
+	selectionHighlighting: "never";
+	focusEnabled:"false";
+	focusThickness: 0;
+}
+
+HScrollBar
+{
+	skinClass: ClassReference("spark.skins.android5.HScrollBarSkin");
+	thumbColor: #009688;
+}
+
+List
+{
+	skinClass: ClassReference("spark.skins.android5.ListSkin");
+	borderAlpha: .1;
+	
+}
+
+VScrollBar
+{
+	skinClass: ClassReference("spark.skins.android5.VScrollBarSkin");
+	thumbColor: #009688;
+}
+
+
+@media (application-dpi: 120)
+{
+	global
+	{
+		fontSize: 12;
+	
+	}
+	
+	ActionBar #titleDisplay
+	{
+		fontSize: 14;
+	}
+}
+
+@media (application-dpi: 160)
+{
+	global
+	{
+		fontSize: 16;	
+	}
+	
+	ActionBar #titleDisplay
+	{
+		fontSize: 18;
+	}
+}
+
+@media (application-dpi: 240)
+{
+	global
+	{
+		fontSize: 20;
+	}
+	
+	ActionBar #titleDisplay
+	{
+		fontSize: 24;
+	}
+}
+
+@media (application-dpi: 320)
+{
+	global
+	{
+		fontSize: 32;
+	}
+	
+	ActionBar #titleDisplay
+	{
+		fontSize: 36;
+	}
+}
+
+@media (application-dpi: 480)
+{
+	global
+	{
+		fontSize: 48;
+		
+	}
+	
+	ActionBar #titleDisplay
+	{
+		fontSize: 54;
+	}
+}
+
+@media (application-dpi: 640)
+{
+	global
+	{
+		fontSize: 64;
+	}
+
+	ActionBar #titleDisplay
+	{
+		fontSize: 72;
+	}
+}
