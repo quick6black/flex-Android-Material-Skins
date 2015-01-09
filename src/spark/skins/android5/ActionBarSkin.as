@@ -33,6 +33,7 @@ package spark.skins.android5
 	import spark.layouts.HorizontalAlign;
 	import spark.layouts.HorizontalLayout;
 	import spark.layouts.VerticalAlign;
+	import spark.primitives.RectangularDropShadow;
 	import spark.skins.mobile.supportClasses.MobileSkin;
 	
 	use namespace mx_internal;
@@ -58,7 +59,7 @@ package spark.skins.android5
 		//  Class constants
 		//
 		//--------------------------------------------------------------------------
-
+		
 		
 		//--------------------------------------------------------------------------
 		//
@@ -77,6 +78,8 @@ package spark.skins.android5
 		{
 			super();
 			
+			dropShadowAlpha = 0.3;
+			
 			switch (applicationDPI)
 			{
 				
@@ -85,9 +88,9 @@ package spark.skins.android5
 					layoutContentGroupHeight = 172;
 					layoutTitleGroupHorizontalPadding = 52;
 					
-					dropShadowBlurX = 15;
-					dropShadowBlurY = 15;
-					dropShadowDistance = 8;
+					dropShadowBlurX = 12;
+					dropShadowBlurY = 12;
+					dropShadowDistance = 10;
 					
 					break;
 				}
@@ -96,9 +99,9 @@ package spark.skins.android5
 					layoutContentGroupHeight = 130;
 					layoutTitleGroupHorizontalPadding = 40;
 					
-					dropShadowBlurX = 12;
-					dropShadowBlurY = 12;
-					dropShadowDistance = 6;
+					dropShadowBlurX = 10;
+					dropShadowBlurY = 10;
+					dropShadowDistance = 8;
 					break;
 				}
 				case DPIClassification.DPI_320:
@@ -106,8 +109,8 @@ package spark.skins.android5
 					layoutContentGroupHeight = 86;
 					layoutTitleGroupHorizontalPadding = 26;
 					
-					dropShadowBlurX = 10;
-					dropShadowBlurY = 10;
+					dropShadowBlurX = 8;
+					dropShadowBlurY = 8;
 					dropShadowDistance = 6;	
 					
 					break;
@@ -117,9 +120,9 @@ package spark.skins.android5
 					layoutContentGroupHeight = 65;
 					layoutTitleGroupHorizontalPadding = 20;
 					
-					dropShadowBlurX = 8;
-					dropShadowBlurY = 8;
-					dropShadowDistance = 6;
+					dropShadowBlurX = 6;
+					dropShadowBlurY = 6;
+					dropShadowDistance = 4;
 					
 					break;
 				}
@@ -128,9 +131,9 @@ package spark.skins.android5
 					layoutContentGroupHeight = 32;
 					layoutTitleGroupHorizontalPadding = 10;
 					
-					dropShadowBlurX = 4;
-					dropShadowBlurY = 4;
-					dropShadowDistance = 3;
+					dropShadowBlurX = 3;
+					dropShadowBlurY = 3;
+					dropShadowDistance = 2;
 					
 					break;
 				}	
@@ -140,15 +143,15 @@ package spark.skins.android5
 					layoutContentGroupHeight = 43;
 					layoutTitleGroupHorizontalPadding = 13;
 					
-					dropShadowBlurX = 5;
-					dropShadowBlurY = 5;
-					dropShadowDistance = 4;
+					dropShadowBlurX = 4;
+					dropShadowBlurY = 4;
+					dropShadowDistance = 3;
 					
 					break;
 				}
 			}
 		}
-
+		
 		/**
 		 *  Default height for navigationGroup, titleGroup and actionGroup.
 		 *
@@ -192,7 +195,7 @@ package spark.skins.android5
 		 *  @private
 		 */
 		private var _actionVisible:Boolean = false;
-
+		
 		//--------------------------------------------------------------------------
 		//
 		//  Skin parts
@@ -226,6 +229,9 @@ package spark.skins.android5
 		private var dropShadowBlurX:Number;		
 		private var dropShadowBlurY:Number;		
 		private var dropShadowDistance:Number;
+		private var dropShadowAlpha:Number;
+		
+		private var dropShadow:RectangularDropShadow;	
 		
 		//--------------------------------------------------------------------------
 		//
@@ -266,6 +272,18 @@ package spark.skins.android5
 			hLayout.paddingLeft = hLayout.paddingTop = hLayout.paddingRight = hLayout.paddingBottom = 0;
 			actionGroup.layout = hLayout;
 			actionGroup.id = "actionGroup";
+			
+			if (getStyle("dropShadowVisible") == true)
+			{
+				dropShadow = new RectangularDropShadow();
+				dropShadow.angle = 90;
+				dropShadow.distance = dropShadowDistance;
+				dropShadow.blurX = dropShadowBlurX;
+				dropShadow.blurY = dropShadowBlurY;
+				dropShadow.mouseEnabled = false;
+				dropShadow.alpha = dropShadowAlpha;
+				addChild(dropShadow);
+			}
 			
 			titleDisplay = new TitleDisplayComponent();
 			titleDisplay.id = "titleDisplay";
@@ -388,7 +406,7 @@ package spark.skins.android5
 			
 			// remove top and bottom padding from content group height
 			var contentGroupsHeight:Number = Math.max(0, unscaledHeight - paddingTop - paddingBottom);
-
+			
 			
 			// position groups, overlap of navigation and action groups is allowed
 			// when overlap occurs, titleDisplay/titleGroup is not visible
@@ -399,6 +417,12 @@ package spark.skins.android5
 				
 				setElementSize(navigationGroup, navigationGroupWidth, contentGroupsHeight);
 				setElementPosition(navigationGroup, paddingLeft, paddingTop);
+			}
+			
+			if (dropShadow)
+			{
+				setElementSize(dropShadow, unscaledWidth, unscaledHeight);
+				setElementPosition(dropShadow, 0, 0);
 			}
 			
 			if (_actionVisible)
@@ -516,18 +540,12 @@ package spark.skins.android5
 		override protected function drawBackground(unscaledWidth:Number, unscaledHeight:Number):void
 		{
 			super.drawBackground(unscaledWidth, unscaledHeight);
-			
-			var dropshadowFilter:DropShadowFilter = new DropShadowFilter(dropShadowDistance, 90, 0x000000, 0.3, dropShadowBlurX, dropShadowBlurY);	
 			var chromeColor:uint = getStyle("chromeColor");
 			var backgroundAlphaValue:Number = getStyle("backgroundAlpha");	
 			
 			graphics.beginFill(chromeColor, backgroundAlphaValue);
 			graphics.drawRect(0, 0, unscaledWidth, unscaledHeight);
-			graphics.endFill();
-			if (getStyle("dropshadowVisible") == true)
-			{
-				this.filters = [dropshadowFilter];
-			}		
+			graphics.endFill();					
 		}
 		
 	}
@@ -646,7 +664,7 @@ class TitleDisplayComponent extends UIComponent implements IDisplayText
 	 */ 
 	private function titleDisplay_valueCommitHandler(event:Event):void 
 	{
-
+		
 	}
 	
 	public function get text():String
