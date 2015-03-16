@@ -211,7 +211,6 @@ package spark.skins.android5
 				dropShadow.distance = dropShadowDistance;
 				dropShadow.blurX = dropShadowBlurX;
 				dropShadow.blurY = dropShadowBlurY;
-				//dropShadow.tlRadius = dropShadow.trRadius = dropShadow.blRadius =  dropShadow.brRadius = backgroundCornerRadius;
 				dropShadow.mouseEnabled = false;
 				dropShadow.alpha = dropShadowAlpha;
 				addChild(dropShadow);

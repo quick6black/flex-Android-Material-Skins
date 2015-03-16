@@ -175,13 +175,6 @@ HScrollBar
 	thumbAlpha: .8;
 }
 
-List
-{
-	skinClass: ClassReference("spark.skins.android5.ListSkin");
-	borderAlpha: .1;
-	
-}
-
 VScrollBar
 {
 	skinClass: ClassReference("spark.skins.android5.HScrollBarSkin");
