@@ -99,6 +99,14 @@ Button.circle
 	downAlpha: 0.7;
 }
 
+Callout
+{
+	backgroundColor: #33B5E5;
+	contentBackgroundColor: #FFFFFF;
+	gap: 12;
+	skinClass: ClassReference("spark.skins.android5.CalloutSkin");
+}
+
 CheckBox
 {
 	skinClass: ClassReference("spark.skins.android5.CheckBoxSkin");
