@@ -139,6 +139,7 @@ HSlider
 	selectionColor:#000000; /*color of the larger semi-transparent circle when selected*/
 	trackColor:#b0b0b0; /*color track*/
 	trackselectionColor: #009688; /*color track when dragged*/
+	datatipColor: #009688; /*color datatip background when dragged*/
 }
 
 TextInput

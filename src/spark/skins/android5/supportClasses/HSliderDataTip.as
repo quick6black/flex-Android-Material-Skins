@@ -33,6 +33,9 @@ package spark.skins.android5.supportClasses
 	
 	use namespace mx_internal;
 	
+	[Style(name="datatipColor", type="uint", format="Color", inherit="yes", theme="spark,mobile")]
+	
+	
 	/**
 	 *  HSlider dataTip component for HSlider in mobile applications. 
 	 * 
@@ -301,8 +304,9 @@ package spark.skins.android5.supportClasses
 		{
 			// draw the rect
 			var g:Graphics = graphics;
+			var datatipColor:uint = getStyle("datatipColor");
 			g.clear();
-			g.beginFill(0x000000, 1.0);
+			g.beginFill(datatipColor, 1.0);
 			g.drawRoundRect(0, 0, unscaledWidth, unscaledHeight, cornerRadius, cornerRadius);
 			g.endFill();
 			
