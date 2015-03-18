@@ -25,8 +25,6 @@ import flash.display.Sprite;
 
 import mx.core.DPIClassification;
 
-import spark.skins.android5.assets.RadioButton_up;
-import spark.skins.android5.supportClasses.SelectableButtonSkinBase;
 import spark.skins.mobile.supportClasses.ButtonSkinBase;
 
 /**
