@@ -5,8 +5,7 @@
 	
 	<fx:Script>
 		<![CDATA[
-			
-			protected var fps : uint;
+
 			
 		]]>
 	</fx:Script>
@@ -14,6 +13,7 @@
 		<s:MultiDPIBitmapSource id="overflowIcon" 
 								source160dpi="@Embed('assets/160/search.png')" 
 								source240dpi="@Embed('assets/240/search.png')"
+								source320dpi="@Embed('assets/320/search.png')"
 								source480dpi="@Embed('assets/480/search.png')"/>
 	</fx:Declarations>
 	<s:actionContent>
