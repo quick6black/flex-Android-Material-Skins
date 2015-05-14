@@ -19,243 +19,244 @@
 
 package spark.skins.android5
 {
-
-import flash.filters.DropShadowFilter;
-import mx.core.DPIClassification;
-import mx.core.mx_internal;
-import spark.skins.mobile.supportClasses.ButtonSkinBase;
-
-use namespace mx_internal;
-
-public class ButtonSkin extends ButtonSkinBase
-{
-    
-	//--------------------------------------------------------------------------
-	//
-	//  Variables
-	//
-	//--------------------------------------------------------------------------
-	protected var circleRadius:int;
+	import mx.core.DPIClassification;
+	import mx.core.mx_internal;
+	import mx.graphics.RectangularDropShadow;
 	
-	protected var cornerRadius:int;	
+	import spark.core.SpriteVisualElement;
+	import spark.skins.mobile.supportClasses.ButtonSkinBase;
 	
-	private var dropShadowBlurX:Number;
+	use namespace mx_internal;
 	
-	private var dropShadowBlurY:Number;
-	
-	private var dropShadowDistance:Number;
-	
-	protected var backgroundCornerRadius:Number;
-	
-    public function ButtonSkin()
-    {
-        super();
-		
-		
-		
-        switch (applicationDPI)
-        {			
-			case DPIClassification.DPI_640:
-			{			
-				layoutGap = 20;
-				layoutPaddingLeft = 60;
-				layoutPaddingRight = 60;
-				layoutPaddingTop = 40;
-				layoutPaddingBottom = 40;
-				measuredDefaultWidth = 128;
-				measuredDefaultHeight = 144;
-				circleRadius = 80;
-				cornerRadius = 10;	
-				
-				dropShadowBlurX = 15;
-				dropShadowBlurY = 15;
-				dropShadowDistance = 8;
-				
-				break;
-			}
-			case DPIClassification.DPI_480:
-			{		
-				layoutGap = 15;
-				layoutPaddingLeft = 45;
-				layoutPaddingRight = 45;
-				layoutPaddingTop = 30;
-				layoutPaddingBottom = 30;
-				measuredDefaultWidth = 96;
-				measuredDefaultHeight = 108;
-				circleRadius = 60;
-				cornerRadius = 8;
-				
-				dropShadowBlurX = 12;
-				dropShadowBlurY = 12;
-				dropShadowDistance = 6;
-				
-				break;
-			}
-            case DPIClassification.DPI_320:
-            {              
-                layoutGap = 10;
-                layoutPaddingLeft = 30;
-                layoutPaddingRight = 30;
-                layoutPaddingTop = 20;
-                layoutPaddingBottom = 20;
-                measuredDefaultWidth = 172;
-                measuredDefaultHeight = 72;
-				circleRadius = 40;
-				
-				cornerRadius = 6;
-				dropShadowBlurX = 10;
-				dropShadowBlurY = 10;
-				dropShadowDistance = 6;	
-				
-                break;
-            }
-			case DPIClassification.DPI_240:
-			{		
-				layoutGap = 7;
-				layoutPaddingLeft = 23;
-				layoutPaddingRight = 23;
-				layoutPaddingTop = 15;
-				layoutPaddingBottom = 15;
-				measuredDefaultWidth = 110;
-				measuredDefaultHeight = 45;
-				circleRadius = 30;
-				cornerRadius = 4;	
-				
-				dropShadowBlurX = 8;
-				dropShadowBlurY = 8;
-				dropShadowDistance = 6;
-				break;
-			}
-			case DPIClassification.DPI_120:
-			{			
-				layoutGap = 4;
-				layoutPaddingLeft = 12;
-				layoutPaddingRight = 12;
-				layoutPaddingTop = 8;
-				layoutPaddingBottom = 8;
-				measuredDefaultWidth = 66;
-				measuredDefaultHeight = 27;
-				circleRadius = 15;
-				cornerRadius = 2;
-				
-				dropShadowBlurX = 4;
-				dropShadowBlurY = 4;
-				dropShadowDistance = 3;
-				
-				break;
-			}
-            default:
-            {        
-                layoutGap = 5;
-                layoutPaddingLeft = 15;
-                layoutPaddingRight = 15;
-                layoutPaddingTop = 10;
-                layoutPaddingBottom = 10;
-                measuredDefaultWidth = 88;
-                measuredDefaultHeight = 36;
-				circleRadius = 20;
-				cornerRadius = 3;
-		
-				dropShadowBlurX = 5;
-				dropShadowBlurY = 5;
-				dropShadowDistance = 2;
-				
-                break;
-            }
-	
-        }
-    }
-
-	
-	
-    //--------------------------------------------------------------------------
-    //
-    //  Overridden methods
-    //
-    //--------------------------------------------------------------------------
-    
-    /**
-     *  @private
-     */
-    override protected function createChildren():void
-    {
-        super.createChildren();
-        setStyle("textAlign", "center");
-    }
-    
-    /**
-     *  @private 
-     */
-    override protected function commitCurrentState():void
-    {   
-        super.commitCurrentState();
-        invalidateDisplayList();
-    }
-	
-	override protected function layoutContents(unscaledWidth:Number, unscaledHeight:Number):void
+	public class ButtonSkin extends ButtonSkinBase
 	{
-		super.layoutContents(unscaledWidth, unscaledHeight);	
-	}
-	
-	override protected function drawBackground(unscaledWidth:Number, unscaledHeight:Number):void
-	{
-		super.drawBackground(unscaledWidth, unscaledHeight);
 		
-		var chromeColor:uint = getStyle("chromeColor");
-		var downColor:uint = getStyle("downColor");
-		var downAlpha:Number = getStyle("downAlpha");
-		var backgroundAlphaValue:Number = getStyle("backgroundAlpha");
-		var dropshadowFilter:DropShadowFilter = new DropShadowFilter(dropShadowDistance, 90, 0x000000, 0.3, dropShadowBlurX, dropShadowBlurY);	
-		var dropshadowFilterDown:DropShadowFilter = new DropShadowFilter(dropShadowDistance * 2, 90, 0x000000, 0.3, dropShadowBlurX * 2, dropShadowBlurY * 2);	
-		if (getStyle("contentBackgroundBorder") == "raised")
+		//--------------------------------------------------------------------------
+		//
+		//  Variables
+		//
+		//--------------------------------------------------------------------------
+		protected var circleRadius:int;
+		
+		protected var cornerRadius:int;	
+		
+		private var dropShadowBlurX:Number;
+		
+		private var dropShadowBlurY:Number;
+		
+		private var dropShadowDistance:Number;
+		
+		protected var backgroundCornerRadius:Number;
+		
+		private var dropShadow:RectangularDropShadow;
+		
+		private var dropShadowAlpha:Number;
+		
+		private var backgroundFill:SpriteVisualElement;
+		
+		public function ButtonSkin()
 		{
-			if (currentState == "down")
-			{	
-				graphics.beginFill(downColor, downAlpha);
-				graphics.drawRoundRectComplex(0, 0, unscaledWidth, unscaledHeight, cornerRadius, cornerRadius, cornerRadius, cornerRadius);
-				graphics.endFill();
-				this.filters = [dropshadowFilterDown];
-			}
-			else
-			{
-				graphics.beginFill(chromeColor, backgroundAlphaValue);
-				graphics.drawRoundRectComplex(0, 0, unscaledWidth, unscaledHeight, cornerRadius, cornerRadius, cornerRadius, cornerRadius);
-				graphics.endFill();
-				this.filters = [dropshadowFilter];
+			super();
+			
+			dropShadowAlpha = 0.3;
+			
+			switch (applicationDPI)
+			{			
+				case DPIClassification.DPI_640:
+				{			
+					layoutGap = 20;
+					layoutPaddingLeft = 60;
+					layoutPaddingRight = 60;
+					layoutPaddingTop = 40;
+					layoutPaddingBottom = 40;
+					measuredDefaultWidth = 128;
+					measuredDefaultHeight = 144;
+					circleRadius = 80;
+					cornerRadius = 10;	
+					
+					dropShadowBlurX = 15;
+					dropShadowBlurY = 15;
+					dropShadowDistance = 8;
+					
+					break;
+				}
+				case DPIClassification.DPI_480:
+				{		
+					layoutGap = 15;
+					layoutPaddingLeft = 45;
+					layoutPaddingRight = 45;
+					layoutPaddingTop = 30;
+					layoutPaddingBottom = 30;
+					measuredDefaultWidth = 96;
+					measuredDefaultHeight = 108;
+					circleRadius = 60;
+					cornerRadius = 8;
+					
+					dropShadowBlurX = 12;
+					dropShadowBlurY = 12;
+					dropShadowDistance = 6;
+					
+					break;
+				}
+				case DPIClassification.DPI_320:
+				{              
+					layoutGap = 10;
+					layoutPaddingLeft = 30;
+					layoutPaddingRight = 30;
+					layoutPaddingTop = 20;
+					layoutPaddingBottom = 20;
+					measuredDefaultWidth = 172;
+					measuredDefaultHeight = 72;
+					circleRadius = 40;
+					
+					cornerRadius = 6;
+					dropShadowBlurX = 10;
+					dropShadowBlurY = 10;
+					dropShadowDistance = 6;	
+					
+					break;
+				}
+				case DPIClassification.DPI_240:
+				{		
+					layoutGap = 7;
+					layoutPaddingLeft = 23;
+					layoutPaddingRight = 23;
+					layoutPaddingTop = 15;
+					layoutPaddingBottom = 15;
+					measuredDefaultWidth = 110;
+					measuredDefaultHeight = 45;
+					circleRadius = 30;
+					cornerRadius = 4;	
+					
+					dropShadowBlurX = 8;
+					dropShadowBlurY = 8;
+					dropShadowDistance = 6;
+					break;
+				}
+				case DPIClassification.DPI_120:
+				{			
+					layoutGap = 4;
+					layoutPaddingLeft = 12;
+					layoutPaddingRight = 12;
+					layoutPaddingTop = 8;
+					layoutPaddingBottom = 8;
+					measuredDefaultWidth = 66;
+					measuredDefaultHeight = 27;
+					cornerRadius = 2;
+					
+					dropShadowBlurX = 4;
+					dropShadowBlurY = 4;
+					dropShadowDistance = 3;
+					
+					break;
+				}
+				default:
+				{        
+					layoutGap = 5;
+					layoutPaddingLeft = 15;
+					layoutPaddingRight = 15;
+					layoutPaddingTop = 10;
+					layoutPaddingBottom = 10;	
+					measuredDefaultWidth = 88;
+					measuredDefaultHeight = 36;
+					cornerRadius = 3;
+					
+					dropShadowBlurX = 5;
+					dropShadowBlurY = 5;
+					dropShadowDistance = 1;
+					
+					break;
+				}
+					
 			}
 		}
-		if (getStyle("contentBackgroundBorder") == "flat")
+		
+		
+		
+		//--------------------------------------------------------------------------
+		//
+		//  Overridden methods
+		//
+		//--------------------------------------------------------------------------
+		
+		/**
+		 *  @private
+		 */
+		override protected function createChildren():void
 		{
-			if (currentState == "down")
-			{	
-				graphics.beginFill(downColor, downAlpha);
-				graphics.drawRoundRectComplex(0, 0, unscaledWidth, unscaledHeight, cornerRadius, cornerRadius, cornerRadius, cornerRadius);
-				graphics.endFill();
-			}
-			else
-			{
-				graphics.beginFill(chromeColor, 0);
-				graphics.drawRoundRectComplex(0, 0, unscaledWidth, unscaledHeight, cornerRadius, cornerRadius, cornerRadius, cornerRadius);
-				graphics.endFill();
-			}
-		}	
-		if (getStyle("contentBackgroundBorder") == "circle")
+			super.createChildren();
+			setStyle("textAlign", "center");
+		}
+		
+		/**
+		 *  @private 
+		 */
+		override protected function commitCurrentState():void
+		{   
+			super.commitCurrentState();
+			invalidateDisplayList();
+		}
+		
+		override protected function layoutContents(unscaledWidth:Number, unscaledHeight:Number):void
 		{
-			if (currentState == "down")
-			{	
-				graphics.beginFill(downColor, downAlpha);
-				graphics.drawCircle(unscaledWidth/2, unscaledHeight/2, circleRadius);
-				graphics.endFill();
-				this.filters = [dropshadowFilterDown];
-			}
-			else
+			super.layoutContents(unscaledWidth, unscaledHeight);
+		}
+		
+		override protected function drawBackground(unscaledWidth:Number, unscaledHeight:Number):void
+		{
+			super.drawBackground(unscaledWidth, unscaledHeight);
+			
+			var chromeColor:uint = getStyle("chromeColor");
+			var downColor:uint = getStyle("downColor");
+			var downAlpha:Number = getStyle("downAlpha");
+			var backgroundAlphaValue:Number = getStyle("backgroundAlpha");
+			
+			if (getStyle("contentBackgroundBorder") == "raised")
 			{
-				graphics.beginFill(chromeColor, backgroundAlphaValue);
-				graphics.drawCircle(unscaledWidth/2, unscaledHeight/2, circleRadius);
-				graphics.endFill();
-				this.filters = [dropshadowFilter];
+				if (currentState == "down")
+				{	
+					graphics.beginFill(downColor, downAlpha);
+					graphics.drawRoundRectComplex(0, 0, unscaledWidth, unscaledHeight, cornerRadius, cornerRadius, cornerRadius, cornerRadius);
+					graphics.endFill();
+					dropShadow = new RectangularDropShadow();
+					dropShadow.angle = 90;
+					dropShadow.distance = dropShadowDistance * 2;
+					dropShadow.blurX = dropShadowBlurX;
+					dropShadow.blurY = dropShadowBlurY;
+					dropShadow.alpha = dropShadowAlpha;
+					dropShadow.tlRadius = dropShadow.trRadius = dropShadow.blRadius = dropShadow.brRadius = cornerRadius;
+					dropShadow.drawShadow(graphics, 0, 0, unscaledWidth, unscaledHeight); 
+				}
+				else
+				{
+					graphics.beginFill(chromeColor, backgroundAlphaValue);
+					graphics.drawRoundRectComplex(0, 0, unscaledWidth, unscaledHeight, cornerRadius, cornerRadius, cornerRadius, cornerRadius);
+					graphics.endFill();
+					dropShadow = new RectangularDropShadow();
+					dropShadow.angle = 90;
+					dropShadow.distance = dropShadowDistance;
+					dropShadow.blurX = dropShadowBlurX;
+					dropShadow.blurY = dropShadowBlurY;
+					dropShadow.alpha = dropShadowAlpha;
+					dropShadow.tlRadius = dropShadow.trRadius = dropShadow.blRadius = dropShadow.brRadius = cornerRadius;
+					dropShadow.drawShadow(graphics, 0, 0, unscaledWidth, unscaledHeight); 
+				}
 			}
-		}	
+			if (getStyle("contentBackgroundBorder") == "flat")
+			{
+				if (currentState == "down")
+				{	
+					graphics.beginFill(downColor, downAlpha);
+					graphics.drawRoundRectComplex(0, 0, unscaledWidth, unscaledHeight, cornerRadius, cornerRadius, cornerRadius, cornerRadius);
+					graphics.endFill();
+				}
+				else
+				{
+					graphics.beginFill(chromeColor, 0);
+					graphics.drawRoundRectComplex(0, 0, unscaledWidth, unscaledHeight, cornerRadius, cornerRadius, cornerRadius, cornerRadius);
+					graphics.endFill();
+				}
+			}	
+		}
 	}
-}
 }
