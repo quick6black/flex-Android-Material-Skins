@@ -7,7 +7,7 @@ So far I skinned
 - Actionbar 
 - Callout
 - Toggle Switch**
-- Raised Button**
+- Raised Button
 - Flat Button 
 - Circle Button 
 - HSlider 
