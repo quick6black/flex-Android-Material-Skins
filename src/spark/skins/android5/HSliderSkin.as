@@ -25,6 +25,7 @@ package spark.skins.android5
 	
 	import mx.core.ClassFactory;
 	import mx.core.IFactory;
+	import mx.events.FlexEvent;
 	
 	import spark.components.Button;
 	import spark.components.HSlider;
@@ -71,6 +72,7 @@ package spark.skins.android5
 			super();
 			
 			thumbSkinClass = spark.skins.android5.HSliderThumbSkin;
+			thumbSkinClassZero = spark.skins.android5.HSliderThumbSkinZero;
 			trackSkinClass = spark.skins.android5.HSliderTrackSkin;
 			filledTrackSkinClass = spark.skins.android5.HSliderTrackSkinFilled;
 			dataTipClass = spark.skins.android5.supportClasses.HSliderDataTip;
@@ -99,10 +101,17 @@ package spark.skins.android5
 		public function set hostComponent(value:HSlider):void 
 		{
 			if (_hostComponent)
+			{
 				_hostComponent.removeEventListener(Event.CHANGE, thumbPositionChanged_handler);
+				_hostComponent.removeEventListener(FlexEvent.VALUE_COMMIT, thumbPositionChanged_handler);
+			}		
 			_hostComponent = value;
 			if (_hostComponent)
+			{
 				_hostComponent.addEventListener(Event.CHANGE, thumbPositionChanged_handler);
+				_hostComponent.addEventListener(FlexEvent.VALUE_COMMIT, thumbPositionChanged_handler);
+			}
+			
 		}
 		
 		//--------------------------------------------------------------------------
@@ -169,6 +178,16 @@ package spark.skins.android5
 		protected var thumbSkinClass:Class;
 		
 		/**
+		 *  Specifies the skin class that will be used for the HSlider thumb.
+		 * 
+		 *  @langversion 3.0
+		 *  @playerversion Flash 10
+		 *  @playerversion AIR 2.5 
+		 *  @productversion Flex 4.5 
+		 */    
+		protected var thumbSkinClassZero:Class;
+		
+		/**
 		 *  Specifies the skin class that will be used for the HSlider track.
 		 * 
 		 *  @langversion 3.0
@@ -228,9 +247,18 @@ package spark.skins.android5
 			filledTrack = new filledTrackSkinClass();
 			addChild(filledTrack);
 			
-			thumb = new Button();
-			thumb.setStyle("skinClass", thumbSkinClass);
-			addChild(thumb);
+			if (hostComponent.value == 0)
+			{
+				thumb = new Button();
+				thumb.setStyle("skinClass", thumbSkinClassZero);
+				addChild(thumb);
+			}
+			if (hostComponent.value > 0)
+			{
+				thumb = new Button();
+				thumb.setStyle("skinClass", thumbSkinClass);
+				addChild(thumb);
+			}
 			
 			// Set up the class factory for the dataTip
 			dataTip = new ClassFactory();
@@ -286,6 +314,14 @@ package spark.skins.android5
 		{
 			//Just trigger a redraw so that the filled area of the track updates itself
 			invalidateDisplayList();
+			if (hostComponent.value == 0)
+			{
+				thumb.setStyle("skinClass", thumbSkinClassZero);
+			}
+			if (hostComponent.value > 0)
+			{
+				thumb.setStyle("skinClass", thumbSkinClass);
+			}
 		}
 		
 	}
