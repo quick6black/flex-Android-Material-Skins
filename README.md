@@ -6,7 +6,7 @@ So far I skinned
 
 - Actionbar 
 - Callout
-- Toggle Switch**
+- Toggle Switch
 - Raised Button
 - Flat Button 
 - Circle Button 
@@ -23,4 +23,3 @@ So far I skinned
 I am using all actionscript, so component colors can be configured in CSS. 
 
 If anyone would like to contribute, create a pull request, or if you want a component skinned open an issue
-** (need to remove dropshadowFilter for performance issues) **
