@@ -69,7 +69,7 @@ package spark.skins.android5
 				{
 					thumbImageWidth = 116;
 					thumbImageHeight = 116;
-					
+					thumbThickness = 6
 					hitZoneOffset = 20;
 					hitZoneSideLength = 160;
 					
@@ -80,7 +80,7 @@ package spark.skins.android5
 					// Note provisional may need changes
 					thumbImageWidth = 88;
 					thumbImageHeight = 88;
-					
+					thumbThickness = 5
 					hitZoneOffset = 20;
 					hitZoneSideLength = 130;
 					
@@ -90,7 +90,7 @@ package spark.skins.android5
 				{
 					thumbImageWidth = 58;
 					thumbImageHeight = 58;
-					
+					thumbThickness = 4;
 					hitZoneOffset = 10;
 					hitZoneSideLength = 80;
 					
@@ -100,7 +100,7 @@ package spark.skins.android5
 				{
 					thumbImageWidth = 44;
 					thumbImageHeight = 44;
-					
+					thumbThickness = 3;
 					hitZoneOffset = 10;
 					hitZoneSideLength = 65;
 					
@@ -110,7 +110,7 @@ package spark.skins.android5
 				{
 					thumbImageWidth = 22;
 					thumbImageHeight = 22;
-					
+					thumbThickness = 1;
 					hitZoneOffset = 5;
 					hitZoneSideLength = 33;
 					
@@ -121,7 +121,7 @@ package spark.skins.android5
 					// default DPI_160
 					thumbImageWidth = 35;
 					thumbImageHeight = 35;
-					
+					thumbThickness = 2;
 					hitZoneOffset = 5;
 					hitZoneSideLength = 40;
 					
@@ -169,13 +169,24 @@ package spark.skins.android5
 		protected var thumbImageHeight:int;
 		
 		/**
+		 *  thickness of thumb line at zero
+		 *
+		 *  @langversion 3.0
+		 *  @playerversion Flash 10
+		 *  @playerversion AIR 2.5
+		 *  @productversion Flex 4.5
+		 */  
+		protected var thumbThickness:int;
+		
+		/**
 		 *  Length of the sizes of the hitzone (assumed to be square)
 		 *
 		 *  @langversion 3.0
 		 *  @playerversion Flash 10
 		 *  @playerversion AIR 2.5
 		 *  @productversion Flex 4.5
-		 */
+		 */	
+		
 		protected var hitZoneSideLength:int;
 		
 		/**
@@ -242,7 +253,7 @@ package spark.skins.android5
 			if (displayedState == "down")
 			{
 				//thumb 
-				graphics.lineStyle(2, zeroColor, 1, true);
+				graphics.lineStyle(thumbThickness, zeroColor, 1, true);
 				graphics.beginFill(0xffffff, 1);
 				graphics.drawCircle(unscaledWidth/2, unscaledHeight/2, thumbImageHeight/4-2);
 				
@@ -250,11 +261,11 @@ package spark.skins.android5
 				graphics.beginFill(selectionColor, .3);
 				graphics.drawCircle(unscaledWidth/2, unscaledHeight/2, thumbImageHeight/2);
 				graphics.endFill();
-	
+				
 			}
 			if (displayedState == "up")
 			{
-				graphics.lineStyle(2, zeroColor, 1, true);
+				graphics.lineStyle(thumbThickness, zeroColor, 1, true);
 				graphics.beginFill(0xffffff, 1);
 				graphics.drawCircle(unscaledWidth/2, unscaledHeight/2, thumbImageHeight/4 - 2);
 				graphics.endFill();

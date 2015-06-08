@@ -22,7 +22,7 @@ package spark.skins.android5
 	import mx.core.DPIClassification;
 	import mx.core.mx_internal;
 	import mx.graphics.RectangularDropShadow;
-
+	
 	import spark.skins.mobile.supportClasses.ButtonSkinBase;
 	
 	use namespace mx_internal;
@@ -35,7 +35,7 @@ package spark.skins.android5
 		//  Variables
 		//
 		//--------------------------------------------------------------------------
-
+		
 		
 		private var dropShadowBlurX:Number;
 		
@@ -44,7 +44,7 @@ package spark.skins.android5
 		private var dropShadowDistance:Number;
 		
 		private var dropShadow:RectangularDropShadow;
-			
+		
 		private var dropShadowAlpha:Number;
 		
 		public function ButtonCircleSkin()
@@ -96,7 +96,7 @@ package spark.skins.android5
 					layoutPaddingBottom = 20;
 					measuredDefaultWidth = 72;
 					measuredDefaultHeight = 72;
-
+					
 					dropShadowBlurX = 10;
 					dropShadowBlurY = 10;
 					dropShadowDistance = 6;	
@@ -210,14 +210,19 @@ package spark.skins.android5
 			}
 			else
 			{
-				graphics.beginFill(0x000000, .1);
-				graphics.drawCircle(unscaledWidth/2, unscaledHeight/2 + .5, unscaledWidth/2 + 1);
-				graphics.endFill();
+				dropShadow = new RectangularDropShadow();
+				dropShadow.angle = 90;
+				dropShadow.distance = dropShadowDistance;
+				dropShadow.blurX = dropShadowBlurX;
+				dropShadow.blurY = dropShadowBlurY;
+				dropShadow.alpha = dropShadowAlpha;
+				dropShadow.tlRadius = dropShadow.trRadius = dropShadow.blRadius = dropShadow.brRadius = unscaledWidth/2;
+				dropShadow.drawShadow(graphics,  0, 0, unscaledWidth, unscaledWidth); 
 				graphics.beginFill(chromeColor, backgroundAlphaValue);
 				graphics.drawCircle(unscaledWidth/2, unscaledHeight/2, unscaledWidth/2);
 				graphics.endFill();
 			}
 		}
-
+		
 	}
 }
