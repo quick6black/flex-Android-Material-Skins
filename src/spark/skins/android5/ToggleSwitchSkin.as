@@ -339,12 +339,6 @@ package spark.skins.android5
 			moveSlidingContent();
 		}	
 		
-		override protected function focusOutHandler(event:FocusEvent):void
-		{
-			super.focusInHandler(event);
-			destroyRipples();
-		}
-		
 		protected function addRipple():void
 		{
 			var thumbColor:uint = 0x000000;

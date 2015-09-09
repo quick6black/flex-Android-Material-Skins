@@ -267,7 +267,7 @@ package spark.skins.android5
 				graphics.beginFill(symbolColor, 1);
 				graphics.drawCircle(unscaledWidth/2, unscaledHeight/2, thumbImageHeight/4);
 				graphics.endFill();
-				onDown();
+				addRipples();
 			}
 			if (displayedState == "up")
 			{
@@ -287,7 +287,7 @@ package spark.skins.android5
 			} 
 		}
 		
-		private function onDown():void 
+		private function addRipples():void 
 		{ 
 			var rippleRadius:Number =  Math.sqrt(width*width+height*height);   
 			if (inkHolder.numElements == 0)

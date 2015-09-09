@@ -274,7 +274,7 @@ package spark.skins.android5
 			graphics.endFill();
 			if (displayedState == "down")
 			{
-				onDown();
+				addRipples();
 			}
 			if (displayedState == "up")
 			{	
@@ -290,7 +290,7 @@ package spark.skins.android5
 			} 
 		}
 		
-		private function onDown():void 
+		private function addRipples():void 
 		{ 
 			var rippleRadius:Number =  Math.sqrt(width*width+height*height);   
 			if (inkHolder.numElements == 0)
