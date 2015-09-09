@@ -23,6 +23,8 @@ package spark.skins.android5
 	import mx.core.DPIClassification;
 	
 	import spark.components.Button;
+	import spark.components.Group;
+	import spark.material.components.InkRipple;
 	import spark.skins.mobile.supportClasses.MobileSkin;
 	
 	/**
@@ -69,7 +71,7 @@ package spark.skins.android5
 				{
 					thumbImageWidth = 116;
 					thumbImageHeight = 116;
-					thumbThickness = 6
+					thumbThickness = 5;
 					hitZoneOffset = 20;
 					hitZoneSideLength = 160;
 					
@@ -80,7 +82,7 @@ package spark.skins.android5
 					// Note provisional may need changes
 					thumbImageWidth = 88;
 					thumbImageHeight = 88;
-					thumbThickness = 5
+					thumbThickness = 4;
 					hitZoneOffset = 20;
 					hitZoneSideLength = 130;
 					
@@ -90,7 +92,7 @@ package spark.skins.android5
 				{
 					thumbImageWidth = 58;
 					thumbImageHeight = 58;
-					thumbThickness = 4;
+					thumbThickness = 3;
 					hitZoneOffset = 10;
 					hitZoneSideLength = 80;
 					
@@ -100,7 +102,7 @@ package spark.skins.android5
 				{
 					thumbImageWidth = 44;
 					thumbImageHeight = 44;
-					thumbThickness = 3;
+					thumbThickness = 2;
 					hitZoneOffset = 10;
 					hitZoneSideLength = 65;
 					
@@ -121,7 +123,7 @@ package spark.skins.android5
 					// default DPI_160
 					thumbImageWidth = 35;
 					thumbImageHeight = 35;
-					thumbThickness = 2;
+					thumbThickness = 1.5;
 					hitZoneOffset = 5;
 					hitZoneSideLength = 40;
 					
@@ -212,6 +214,20 @@ package spark.skins.android5
 		//
 		//--------------------------------------------------------------------------
 		
+		public var inkHolder:Group;
+		public var inkColor:uint = 0x000000; 
+		private var currentRipple:InkRipple; 
+		
+		override protected function createChildren():void
+		{
+			super.createChildren();
+			
+			inkHolder = new Group();
+			inkHolder.id = "inkHolder";
+			addChild(inkHolder);
+			
+		}
+		
 		/**
 		 *  @private 
 		 */ 
@@ -236,6 +252,7 @@ package spark.skins.android5
 		override protected function layoutContents(unscaledWidth:Number, unscaledHeight:Number):void
 		{
 			super.layoutContents(unscaledWidth, unscaledHeight);
+			setElementPosition(inkHolder, unscaledWidth/2, unscaledHeight/2);
 		}
 		
 		/**
@@ -250,26 +267,38 @@ package spark.skins.android5
 			graphics.beginFill(0xffffff, 0);
 			graphics.drawRect(-hitZoneOffset, -hitZoneOffset, hitZoneSideLength, hitZoneSideLength);
 			graphics.endFill();
+			//add in thumb
+			graphics.lineStyle(thumbThickness, zeroColor, 1, true);
+			graphics.beginFill(0xffffff, 1);
+			graphics.drawCircle(unscaledWidth/2, unscaledHeight/2, thumbImageHeight/4 - 2);
+			graphics.endFill();
 			if (displayedState == "down")
 			{
-				//thumb 
-				graphics.lineStyle(thumbThickness, zeroColor, 1, true);
-				graphics.beginFill(0xffffff, 1);
-				graphics.drawCircle(unscaledWidth/2, unscaledHeight/2, thumbImageHeight/4-2);
-				
-				//background
-				graphics.beginFill(selectionColor, .3);
-				graphics.drawCircle(unscaledWidth/2, unscaledHeight/2, thumbImageHeight/2);
-				graphics.endFill();
-				
+				onDown();
 			}
 			if (displayedState == "up")
-			{
-				graphics.lineStyle(thumbThickness, zeroColor, 1, true);
-				graphics.beginFill(0xffffff, 1);
-				graphics.drawCircle(unscaledWidth/2, unscaledHeight/2, thumbImageHeight/4 - 2);
-				graphics.endFill();
+			{	
+				destroyRipples()
 			}
 		}
+		
+		protected function destroyRipples():void 
+		{ 
+			for(var i:int=0; i < inkHolder.numElements; i++) 
+			{ 
+				inkHolder.getElementAt(i)["destroy"](true); 
+			} 
+		}
+		
+		private function onDown():void 
+		{ 
+			var rippleRadius:Number =  Math.sqrt(width*width+height*height);   
+			if (inkHolder.numElements == 0)
+			{
+				currentRipple = new InkRipple(0, 0, rippleRadius, inkColor, 400); 
+				currentRipple.owner = inkHolder; 
+				inkHolder.addElement(currentRipple); 
+			}
+		} 
 	}
 }

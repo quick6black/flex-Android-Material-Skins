@@ -20,9 +20,14 @@
 package spark.skins.android5
 {
 	
+	import flash.events.MouseEvent;
+	
 	import mx.core.DPIClassification;
 	
 	import spark.components.Button;
+	import spark.components.Group;
+	
+	import spark.material.components.InkRipple;
 	import spark.skins.mobile.supportClasses.MobileSkin;
 	
 	/**
@@ -58,6 +63,8 @@ package spark.skins.android5
 		 *  @productversion Flex 4.5
 		 * 
 		 */
+		
+		
 		public function HSliderThumbSkin()
 		{
 			super();
@@ -140,7 +147,8 @@ package spark.skins.android5
 		/** 
 		 * @copy spark.skins.spark.ApplicationSkin#hostComponent
 		 */
-		public var hostComponent:Button;
+		
+		public var _hostComponent:Button;
 		
 		//--------------------------------------------------------------------------
 		//
@@ -195,6 +203,20 @@ package spark.skins.android5
 		 */    
 		private var displayedState:String;
 		
+		public var inkHolder:Group;
+		public var inkColor:uint = 0x000000; 
+		private var currentRipple:InkRipple; 
+		
+		override protected function createChildren():void
+		{
+			super.createChildren();
+			
+			inkHolder = new Group();
+			inkHolder.id = "inkHolder";
+			addChild(inkHolder);
+			
+		}
+		
 		//--------------------------------------------------------------------------
 		//
 		//  Overridden methods
@@ -225,6 +247,7 @@ package spark.skins.android5
 		override protected function layoutContents(unscaledWidth:Number, unscaledHeight:Number):void
 		{
 			super.layoutContents(unscaledWidth, unscaledHeight);
+			setElementPosition(inkHolder, unscaledWidth/2, unscaledHeight/2);
 		}
 		
 		/**
@@ -241,19 +264,38 @@ package spark.skins.android5
 			graphics.endFill();
 			if (displayedState == "down")
 			{
-				graphics.beginFill(selectionColor, .3);
-				graphics.drawCircle(unscaledWidth/2, unscaledHeight/2, thumbImageHeight/2);
-				graphics.endFill();
 				graphics.beginFill(symbolColor, 1);
 				graphics.drawCircle(unscaledWidth/2, unscaledHeight/2, thumbImageHeight/4);
 				graphics.endFill();
+				onDown();
 			}
 			if (displayedState == "up")
 			{
 				graphics.beginFill(symbolColor, 1);
 				graphics.drawCircle(unscaledWidth/2, unscaledHeight/2, thumbImageHeight/4 - 2);
 				graphics.endFill();
+				destroyRipples()
 			}
 		}
+		
+		
+		protected function destroyRipples():void 
+		{ 
+			for(var i:int=0; i < inkHolder.numElements; i++) 
+			{ 
+				inkHolder.getElementAt(i)["destroy"](true); 
+			} 
+		}
+		
+		private function onDown():void 
+		{ 
+			var rippleRadius:Number =  Math.sqrt(width*width+height*height);   
+			if (inkHolder.numElements == 0)
+			{
+				currentRipple = new InkRipple(0, 0, rippleRadius, inkColor, 400); 
+				currentRipple.owner = inkHolder; 
+				inkHolder.addElement(currentRipple); 
+			}
+		} 
 	}
 }
