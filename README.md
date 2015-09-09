@@ -4,11 +4,11 @@ Set of Skins for Flex Mobile.
 
 So far I skinned
 
-- Actionbar 
+- Actionbar (no animation needed)
 - Callout
 - Toggle Switch (animations added)
-- Raised Button
-- Flat Button 
+- Raised Button (animations added)
+- Flat Button (animations added)
 - Circle Button 
 - HSlider (animations added)
 - HScrollBar
@@ -16,8 +16,8 @@ So far I skinned
 - Radiobutton 
 - Textinput 
 - Textarea 
-- TransparentActionButton 
-- TransparentNavigationButton 
+- TransparentActionButton (ripple animation added) 
+- TransparentNavigationButton(ripple animation added) 
 - VScrollBar
 
 I am using all actionscript, so component colors can be configured in CSS. 
