@@ -19,14 +19,18 @@
 
 package spark.skins.android5
 {
+	import flash.events.MouseEvent;
 	import mx.core.DPIClassification;
 	import mx.core.mx_internal;
 	import mx.graphics.RectangularDropShadow;
-	
+	import spark.components.Group;
 	import spark.core.SpriteVisualElement;
+	import spark.skins.android5.supportClasses.InkRipple;
 	import spark.skins.mobile.supportClasses.ButtonSkinBase;
 	
 	use namespace mx_internal;
+	
+	[Style(name="inkColor", type="uint", format="Color", inherit="yes", defaultValue="#999999")]
 	
 	public class ButtonSkin extends ButtonSkinBase
 	{
@@ -54,6 +58,10 @@ package spark.skins.android5
 		
 		private var backgroundFill:SpriteVisualElement;
 		
+		public var inkHolder:Group;
+		
+		private var currentRipple:InkRipple; 
+		
 		public function ButtonSkin()
 		{
 			super();
@@ -65,113 +73,93 @@ package spark.skins.android5
 				case DPIClassification.DPI_640:
 				{			
 					layoutGap = 20;
-					layoutPaddingLeft = 60;
-					layoutPaddingRight = 60;
-					layoutPaddingTop = 40;
-					layoutPaddingBottom = 40;
+					
 					measuredDefaultWidth = 128;
 					measuredDefaultHeight = 144;
 					circleRadius = 80;
 					cornerRadius = 10;	
 					
-					dropShadowBlurX = 15;
-					dropShadowBlurY = 15;
-					dropShadowDistance = 8;
+					dropShadowBlurX = 10;
+					dropShadowBlurY = 10;
+					dropShadowDistance = 5;
 					
 					break;
 				}
 				case DPIClassification.DPI_480:
 				{		
 					layoutGap = 15;
-					layoutPaddingLeft = 45;
-					layoutPaddingRight = 45;
-					layoutPaddingTop = 30;
-					layoutPaddingBottom = 30;
+					
 					measuredDefaultWidth = 96;
 					measuredDefaultHeight = 108;
 					circleRadius = 60;
 					cornerRadius = 8;
 					
-					dropShadowBlurX = 12;
-					dropShadowBlurY = 12;
-					dropShadowDistance = 6;
+					dropShadowBlurX = 8;
+					dropShadowBlurY = 8;
+					dropShadowDistance = 4;
 					
 					break;
 				}
 				case DPIClassification.DPI_320:
 				{              
 					layoutGap = 10;
-					layoutPaddingLeft = 30;
-					layoutPaddingRight = 30;
-					layoutPaddingTop = 20;
-					layoutPaddingBottom = 20;
+					
 					measuredDefaultWidth = 172;
 					measuredDefaultHeight = 72;
 					circleRadius = 40;
 					
 					cornerRadius = 6;
-					dropShadowBlurX = 10;
-					dropShadowBlurY = 10;
-					dropShadowDistance = 6;	
+					dropShadowBlurX = 6;
+					dropShadowBlurY = 6;
+					dropShadowDistance = 3;	
 					
 					break;
 				}
 				case DPIClassification.DPI_240:
 				{		
 					layoutGap = 7;
-					layoutPaddingLeft = 23;
-					layoutPaddingRight = 23;
-					layoutPaddingTop = 15;
-					layoutPaddingBottom = 15;
 					measuredDefaultWidth = 110;
 					measuredDefaultHeight = 45;
 					circleRadius = 30;
 					cornerRadius = 4;	
 					
-					dropShadowBlurX = 8;
-					dropShadowBlurY = 8;
-					dropShadowDistance = 6;
+					dropShadowBlurX = 4;
+					dropShadowBlurY = 4;
+					dropShadowDistance = 2;
 					break;
 				}
 				case DPIClassification.DPI_120:
 				{			
 					layoutGap = 4;
-					layoutPaddingLeft = 12;
-					layoutPaddingRight = 12;
-					layoutPaddingTop = 8;
-					layoutPaddingBottom = 8;
+					
 					measuredDefaultWidth = 66;
 					measuredDefaultHeight = 27;
 					cornerRadius = 2;
 					
-					dropShadowBlurX = 4;
-					dropShadowBlurY = 4;
-					dropShadowDistance = 3;
+					dropShadowBlurX = 2;
+					dropShadowBlurY = 2;
+					dropShadowDistance = 1;
 					
 					break;
 				}
 				default:
 				{        
 					layoutGap = 5;
-					layoutPaddingLeft = 15;
-					layoutPaddingRight = 15;
-					layoutPaddingTop = 10;
-					layoutPaddingBottom = 10;	
+					
 					measuredDefaultWidth = 88;
 					measuredDefaultHeight = 36;
 					cornerRadius = 3;
 					
-					dropShadowBlurX = 5;
-					dropShadowBlurY = 5;
+					dropShadowBlurX = 3;
+					dropShadowBlurY = 3;
 					dropShadowDistance = 1;
 					
 					break;
 				}
 					
 			}
+			
 		}
-		
-		
 		
 		//--------------------------------------------------------------------------
 		//
@@ -186,6 +174,15 @@ package spark.skins.android5
 		{
 			super.createChildren();
 			setStyle("textAlign", "center");
+			hostComponent.addEventListener(MouseEvent.MOUSE_DOWN, onDown);
+			
+			inkHolder = new Group();
+			inkHolder.id = "inkHolder";	
+			inkHolder.clipAndEnableScrolling = true;
+			inkHolder.width = this.width;
+			inkHolder.height = this.height;
+			addChild(inkHolder);
+			
 		}
 		
 		/**
@@ -194,12 +191,16 @@ package spark.skins.android5
 		override protected function commitCurrentState():void
 		{   
 			super.commitCurrentState();
+			
 			invalidateDisplayList();
 		}
 		
 		override protected function layoutContents(unscaledWidth:Number, unscaledHeight:Number):void
 		{
 			super.layoutContents(unscaledWidth, unscaledHeight);
+			
+			setElementSize(inkHolder, unscaledWidth, unscaledHeight);
+			setElementPosition(inkHolder, 0, 0);
 		}
 		
 		override protected function drawBackground(unscaledWidth:Number, unscaledHeight:Number):void
@@ -240,6 +241,7 @@ package spark.skins.android5
 					dropShadow.alpha = dropShadowAlpha;
 					dropShadow.tlRadius = dropShadow.trRadius = dropShadow.blRadius = dropShadow.brRadius = cornerRadius;
 					dropShadow.drawShadow(graphics, 0, 0, unscaledWidth, unscaledHeight); 
+					destroyRipples();
 				}
 			}
 			if (getStyle("contentBackgroundBorder") == "flat")
@@ -255,8 +257,28 @@ package spark.skins.android5
 					graphics.beginFill(chromeColor, 0);
 					graphics.drawRoundRectComplex(0, 0, unscaledWidth, unscaledHeight, cornerRadius, cornerRadius, cornerRadius, cornerRadius);
 					graphics.endFill();
+					destroyRipples();
 				}
 			}	
 		}
+		
+		protected function destroyRipples():void 
+		{ 
+			for(var i:int=0; i < inkHolder.numElements; i++) 
+			{ 
+				inkHolder.getElementAt(i)["destroy"](true); 
+			} 
+		}
+		
+		private function onDown(event:MouseEvent):void 
+		{ 
+			var inkColor:uint = getStyle("inkColor");
+			if(currentRipple) 
+				currentRipple.isMouseDown = false; 
+			var rippleRadius:Number =  Math.sqrt(width*width+height*height); 
+			currentRipple = new InkRipple(event["localX"], event["localY"], rippleRadius*2, inkColor, 1200); 
+			currentRipple.owner = inkHolder; 
+			inkHolder.addElement(currentRipple); 
+		} 
 	}
 }

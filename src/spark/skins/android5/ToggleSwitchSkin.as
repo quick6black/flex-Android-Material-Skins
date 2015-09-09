@@ -35,7 +35,7 @@ package spark.skins.android5
 	import spark.components.Group;
 	import spark.components.ToggleSwitch;
 	import spark.core.SpriteVisualElement;
-	import spark.material.components.InkRipple;
+	import spark.skins.android5.supportClasses.InkRipple;
 	import spark.skins.mobile.supportClasses.MobileSkin;
 	
 	use namespace mx_internal;

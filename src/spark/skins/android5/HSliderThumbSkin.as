@@ -26,8 +26,7 @@ package spark.skins.android5
 	
 	import spark.components.Button;
 	import spark.components.Group;
-	
-	import spark.material.components.InkRipple;
+	import spark.skins.android5.supportClasses.InkRipple;
 	import spark.skins.mobile.supportClasses.MobileSkin;
 	
 	/**

@@ -25,7 +25,7 @@ global
 }
 ActionBar
 {
-	chromeColor: #009688;
+	chromeColor: #106CC8;
 	skinClass: ClassReference("spark.skins.android5.ActionBarSkin");
 	paddingBottom: 0;
 	paddingLeft: 0;
@@ -51,19 +51,21 @@ ActionBar ButtonBase
 ActionBar Group#actionGroup Button
 {
 	skinClass: ClassReference("spark.skins.android5.TransparentActionButtonSkin");
-	chromeColor: #009688;
-	downColor: #b9b8b8;
+	chromeColor: #106CC8;
+	downColor: #106CC8;
 	downAlpha: 0.7;
 	color: #FFFFFF;
+	inkColor: #c6e0fb;
 }
 
 ActionBar Group#navigationGroup Button
 {
 	skinClass: ClassReference("spark.skins.android5.TransparentNavigationButtonSkin");
-	chromeColor: #009688;
-	downColor: #b9b8b8;
+	chromeColor: #106CC8;
+	downColor: #106CC8;
 	downAlpha: 0.7;
 	color: #FFFFFF;
+	inkColor: #c6e0fb;
 }
 
 Button
@@ -72,9 +74,10 @@ Button
 	fontWeight: "bold";
 	contentBackgroundBorder: "raised";
 	skinClass: ClassReference("spark.skins.android5.ButtonSkin");
-	chromeColor: #009688;
-	downColor: #b9b8b8;
-	downAlpha: 0.7;
+	chromeColor: #106CC8;
+	downColor: #106CC8;
+	downAlpha: 0.8;
+	inkColor: #c6e0fb;
 }
 
 Button.flat
@@ -85,7 +88,34 @@ Button.flat
 	skinClass: ClassReference("spark.skins.android5.ButtonSkin");
 	chromeColor: #009688;
 	downColor: #b9b8b8;
-	downAlpha: 0.7;
+	downAlpha: 0.1;
+	inkColor: #c6e0fb;
+}
+
+Button.warn
+{
+	fontFamily: RobotoBold;
+	fontWeight: "bold";
+	contentBackgroundBorder: "raised";
+	skinClass: ClassReference("spark.skins.android5.ButtonSkin");
+	chromeColor: #f44336;
+	downColor: #f44336;
+	downAlpha: 0.8;
+	inkColor: #f68f89;
+	color: #ffffff;
+}
+
+Button.flat-warn
+{
+	fontFamily: RobotoBold;
+	fontWeight: "bold";
+	contentBackgroundBorder: "flat";
+	skinClass: ClassReference("spark.skins.android5.ButtonSkin");
+	chromeColor: #f44336;
+	downColor: #b9b8b8;
+	downAlpha: 0.1;
+	inkColor: #f68f89;
+	color: #f44336;
 }
 
 Button.circle
