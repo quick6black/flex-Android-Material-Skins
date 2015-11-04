@@ -171,6 +171,11 @@ HSlider
 	datatipColor: #009688; /*color datatip background when dragged*/
 }
 
+List
+{
+	skinClass: ClassReference("spark.skins.android5.ListSkin");
+}
+
 TextInput
 {
 	skinClass: ClassReference("spark.skins.android5.StageTextInputSkin");
