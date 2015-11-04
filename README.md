@@ -10,6 +10,7 @@ So far I skinned
 - Raised Button (animations added)
 - Flat Button (animations added)
 - Circle Button 
+- List (animations added)
 - HSlider (animations added)
 - HScrollBar
 - Checkbox (using FXG for now) 
