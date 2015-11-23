@@ -147,8 +147,10 @@ RadioButton
 	skinClass: ClassReference("spark.skins.android5.RadioButtonSkin");
 	backgroundAlpha: 0; /*background alpha*/
 	chromeColor: #000000; /*background color*/
-	selectColor: #009688; 
-	unselectColor: #6D6D6D;
+	selectColor: #ff6868; 
+	unselectColor: #757575;
+	disabledColor: #757575; 
+	inkColor: #000000; /*color of ripple animation*/
 }
 
 ToggleSwitch
