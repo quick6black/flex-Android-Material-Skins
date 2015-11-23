@@ -14,7 +14,7 @@ So far I skinned
 - HSlider (animations added)
 - HScrollBar
 - Checkbox (using FXG for now) 
-- Radiobutton 
+- Radiobutton (animationd added) 
 - Textinput 
 - Textarea 
 - TransparentActionButton (ripple animation added) 
