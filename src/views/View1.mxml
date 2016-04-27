@@ -5,6 +5,8 @@
 	
 	<fx:Script>
 		<![CDATA[
+			import spark.skins.android5.ScrollingStageTextInputSkin;
+			import spark.skins.android5.ScrollingStageTextAreaSkin;
 
 			
 		]]>
@@ -42,6 +44,8 @@
 			<s:VGroup width="100%" height="100%" horizontalAlign="center">
 				<s:TextInput prompt="TextInput"/>
 				<s:TextArea prompt="TextArea"/>			
+				<s:TextInput prompt="TextInput Scrollable" skinClass="spark.skins.android5.ScrollingStageTextInputSkin"/>
+				<s:TextArea prompt="TextArea Scrollable" skinClass="spark.skins.android5.ScrollingStageTextAreaSkin"/>		
 				<s:HSlider width="100%" snapInterval="0" minimum="0" maximum="100"/>
 			</s:VGroup>
 		</s:VGroup>
