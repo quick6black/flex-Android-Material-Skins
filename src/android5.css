@@ -98,6 +98,18 @@ Button.circle
 	downAlpha: 0.7;
 }
 
+ButtonBar
+{
+	skinClass: ClassReference("spark.skins.android5.ButtonBarSkin");
+	color: #007AFF; /*font color*/
+	fontFamily: RobotoRegular;
+	fontWeight: normal;
+	chromeColor: #009688;
+	downColor: #b9b8b8;
+	selectColor: #b9b8b8;
+	backgroundAlpha: 1;
+}
+
 Callout
 {
 	backgroundColor: #33B5E5;
