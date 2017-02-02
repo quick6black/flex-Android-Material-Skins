@@ -5,6 +5,7 @@ Set of Skins for Flex Mobile.
 So far I skinned
 
 - Actionbar (no animation needed)
+- Buttonbar (animations added)
 - Callout
 - Toggle Switch (animations added)
 - Raised Button (animations added)
