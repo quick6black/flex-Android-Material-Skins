@@ -22,6 +22,8 @@ So far I skinned
 - TransparentNavigationButton(ripple animation added) 
 - VScrollBar
 
+- MobileGrid - experimental (animation added) need to rewrite some of the component to property replicate material design
+
 I am using all actionscript, so component colors can be configured in CSS. 
 
 If anyone would like to contribute, create a pull request, or if you want a component skinned open an issue
