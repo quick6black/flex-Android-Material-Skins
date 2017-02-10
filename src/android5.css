@@ -192,6 +192,26 @@ List
 	skinClass: ClassReference("spark.skins.android5.ListSkin");
 }
 
+TabbedViewNavigator #tabBar
+{
+	fontFamily: RobotoRegular;
+	color: #FFFFFF;
+	fontSize: 12;
+	fontWeight: normal;
+	iconPlacement: top;
+	interactionMode: touch;
+	skinClass: ClassReference("spark.skins.android5.TabbedViewNavigatorTabBarSkin");
+	chromeColor: #009688; /*green*/
+	downColor: #b9b8b8; /*grey*/
+	selectColor: #b9b8b8; /*grey*/
+}
+
+TabbedViewNavigator 
+{
+	skinClass: ClassReference("spark.skins.android5.TabbedViewNavigatorSkin");
+	tabLocation: bottom;
+}
+
 TextInput
 {
 	skinClass: ClassReference("spark.skins.android5.StageTextInputSkin");

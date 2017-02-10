@@ -15,14 +15,15 @@ So far I skinned
 - HSlider (animations added)
 - HScrollBar
 - Checkbox (using FXG for now) 
-- Radiobutton (animationd added) 
+- Radiobutton (animations added) 
+- Tabbedviewnavigator (ripple animation added) 
 - Textinput 
 - Textarea 
 - TransparentActionButton (ripple animation added) 
 - TransparentNavigationButton(ripple animation added) 
 - VScrollBar
 
-- MobileGrid - experimental (animation added) need to rewrite some of the component to property replicate material design
+- MobileGrid - experimental (ripple animation added) need to rewrite some of the component to property replicate material design
 
 I am using all actionscript, so component colors can be configured in CSS. 
 
