@@ -211,6 +211,7 @@ ns1|MobileGridHeader
 	chromeColor: #FFFFFF;
 	skinClass: ClassReference('spark.skins.android5.MobileGridHeaderButtonBarSkin');
 	fontWeight: bold;
+	borderColor: #929292;
 }
 
 ns1|MobileGridRowRenderer
