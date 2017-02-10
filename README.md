@@ -17,6 +17,7 @@ So far I skinned
 - Radiobutton 
 - Textinput 
 - Textarea 
+- Tabbedviewnavigator
 - TransparentActionButton 
 - TransparentNavigationButton 
 - VScrollBar
