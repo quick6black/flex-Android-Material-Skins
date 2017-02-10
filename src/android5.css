@@ -1,5 +1,7 @@
 /* CSS file */
 @namespace "library://ns.adobe.com/flex/spark";
+@namespace ns "http://flex.apache.org/experimental/ns";
+@namespace ns1 "spark.components.supportClasses.*";
 
 /*Roboto Fonts*/
 @font-face {
@@ -194,6 +196,30 @@ VScrollBar
 	thumbAlpha: .8;
 }
 
+ns|MobileGrid
+{
+	skinClass: ClassReference('spark.skins.android5.MobileGridSkin');
+	color: white;
+	selectionColor: #F5F5F5;
+	
+}
+
+ns1|MobileGridHeader
+{	
+	textShadowAlpha: 0;
+	color: #929292;
+	chromeColor: #FFFFFF;
+	skinClass: ClassReference('spark.skins.android5.MobileGridHeaderButtonBarSkin');
+	fontWeight: bold;
+}
+
+ns1|MobileGridRowRenderer
+{
+	verticalAlign: "middle";
+	downColor: #EEEEEE;
+	selectionColor: #F5F5F5;
+	useOpaqueBackground: "false";
+}
 
 @media (application-dpi: 120)
 {
