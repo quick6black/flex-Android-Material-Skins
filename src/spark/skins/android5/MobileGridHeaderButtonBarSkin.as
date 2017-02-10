@@ -67,6 +67,7 @@ package spark.skins.android5
 					flatheight = 3; 
 					break;
 				}
+			}
 		}
 		
 		override protected function createChildren():void
