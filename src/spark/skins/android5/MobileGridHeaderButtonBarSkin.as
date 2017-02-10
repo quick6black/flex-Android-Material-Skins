@@ -17,7 +17,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 package spark.skins.android5
-{
+{	
+	import mx.core.DPIClassification;
+	
 	import spark.components.ButtonBarButton;
 	import spark.components.DataGroup;
 	import spark.layouts.HorizontalLayout;
@@ -27,10 +29,46 @@ package spark.skins.android5
 	
 	public class MobileGridHeaderButtonBarSkin extends ButtonBarSkin
 	{
+		protected var flatheight:uint;	
 		
 		public function MobileGridHeaderButtonBarSkin()
 		{
 			super();
+			
+			switch (applicationDPI)
+			{
+				case DPIClassification.DPI_640:
+				{
+					flatheight = 9;
+					break;
+				}
+				case DPIClassification.DPI_480:
+				{
+					flatheight = 7;				
+					break;
+				}
+				case DPIClassification.DPI_320:
+				{
+					flatheight = 6;				
+					break;
+				}
+				case DPIClassification.DPI_240:
+				{
+					
+					flatheight = 5;
+					break;
+				}
+				case DPIClassification.DPI_120:
+				{
+					flatheight = 2;					
+					break;
+				}
+				default:
+				{
+					flatheight = 3; 
+					break;
+				}
+			}
 		}
 		
 		override protected function createChildren():void
@@ -84,6 +122,9 @@ package spark.skins.android5
 			graphics.beginFill(getStyle("chromeColor"), backgroundAlpha);
 			graphics.drawRect(0, 0, unscaledWidth, unscaledHeight);
 			graphics.endFill();
+			
+			graphics.lineStyle(flatheight, getStyle("borderColor"), 1, true); 
+			graphics.drawRect(0, 0, unscaledWidth - 1, unscaledHeight - 1);
 		}
 	}
 }
