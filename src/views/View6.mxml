@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the "License"); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+example taken from http://flex.apache.org/asdoc/spark/components/MobileGrid.html#columns
+-->
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" 
+		title="MobileGrid" 
+		xmlns:ns="http://flex.apache.org/experimental/ns"
+		creationComplete="creationCompleteHandler(event)">
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import mx.events.FlexEvent;
+			import mx.events.PropertyChangeEvent;
+			
+			private const dataProvider:ArrayCollection = new ArrayCollection();
+			
+			private function creationCompleteHandler(event:FlexEvent):void
+			{			
+				var src:Array = [];
+				for (var i:int = 0; i <50; i++)
+				{
+					src.push({Name: "John_" + i, Surname: "Doe_" + i, Age: 5 + i, status: 1000 + i, Comments: "Sed tamen"});
+					src.push({Name: "Paul_" + i, Surname: "Smith_" + i, Age: 12 + i, status: 2000 + i, Comments: "Quanta autem" });
+					src.push({Name: "Sarah_" + i, Surname: "Lee_" + i, Age: 42 + i, status: 2000 + i, Comments: "Ideo urbs"});
+				}
+				dataProvider.source = src;
+				mobileGrid.addEventListener(TransformGestureEvent.GESTURE_SWIPE, swipeHandler);
+			}			
+			
+			protected function swipeHandler(event:TransformGestureEvent):void
+			{
+				switch(event.offsetY)
+				{
+					case 1:
+					{
+						// swiped down
+						this.tabBarVisible = true;
+						this.actionBarVisible = true;
+						break;
+					}
+					case -1:
+					{
+						// swiped up
+						this.tabBarVisible = false;
+						this.actionBarVisible = false;
+						break;
+					}
+				}
+			}
+			
+		]]>
+	</fx:Script>	
+	<ns:MobileGrid id="mobileGrid" width="100%" height="100%" sortableColumns="true" dataProvider="{dataProvider}" contentBackgroundColor="0xFFFFFF"
+				   alternatingItemColors="[0xFFFFFF, 0xFFFFFF]" color="0x00000" selectionColor="0x33B5E5"> 
+		<ns:columns>
+			<ns:MobileGridColumn dataField="Name" styleName="bold" width="30%"/>
+			<ns:MobileGridColumn dataField="Surname" styleName="bold" width="30%"/>
+			<ns:MobileGridColumn dataField="Comments" width="40%"/>
+		</ns:columns>
+	</ns:MobileGrid>	
+</s:View>
