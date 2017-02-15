@@ -1,8 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:ViewNavigatorApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
-							xmlns:s="library://ns.adobe.com/flex/spark" 
-							firstView="views.View1" 
-							applicationDPI="160">
-	
+<s:TabbedViewNavigatorApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+								  xmlns:s="library://ns.adobe.com/flex/spark" 
+								  applicationDPI="160"
+								  applicationComplete="tabbedviewnavigatorAppComplete(event)">
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			import spark.events.IndexChangeEvent;
+			import assets.icon;
+			
+			
+			protected function tabbedviewnavigatorAppComplete(event:FlexEvent):void
+			{
+				tab1.label = "1";
+				this.tabbedNavigator.addEventListener(IndexChangeEvent.CHANGE,onChange);
+			}
+			
+			protected function onChange(event:IndexChangeEvent):void
+			{
+				if (event.newIndex == 0)
+				{
+					fadeEffect.play([tab1.activeView]); 
+					tab1.label = "1";
+					tab3.label = "";
+					tab4.label = "";
+				}
+				else if (event.newIndex == 1)
+				{
+					fadeEffect.play([tab3.activeView]); 
+					tab1.label = "";
+					tab3.label = "2";
+					tab4.label = "";
+				}
+				else if (event.newIndex == 2)
+				{
+					fadeEffect.play([tab4.activeView]); 
+					tab1.label = "";
+					tab3.label = "";
+					tab4.label = "3";
+				}
+				
+			}
+		]]>
+	</fx:Script>
 	<fx:Style source="android5.css"/>
-</s:ViewNavigatorApplication>
+	<fx:Declarations>
+		<s:Fade duration="700" id="fadeEffect" alphaFrom="0" alphaTo="1.0"/>
+	</fx:Declarations>
+	<s:ViewNavigator id="tab1" firstView="views.View1" width="100%" height="100%" icon="{icon}"/>
+	<s:ViewNavigator id="tab3" firstView="views.View5" width="100%" height="100%" icon="{icon}"/>
+	<s:ViewNavigator id="tab4" firstView="views.View6" width="100%" height="100%" icon="{icon}"/>
+</s:TabbedViewNavigatorApplication>
+
+
+

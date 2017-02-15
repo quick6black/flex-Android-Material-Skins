@@ -206,12 +206,6 @@ TabbedViewNavigator #tabBar
 	selectColor: #b9b8b8; /*grey*/
 }
 
-TabbedViewNavigator 
-{
-	skinClass: ClassReference("spark.skins.android5.TabbedViewNavigatorSkin");
-	tabLocation: bottom;
-}
-
 TextInput
 {
 	skinClass: ClassReference("spark.skins.android5.StageTextInputSkin");

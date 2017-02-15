@@ -16,7 +16,7 @@ So far I skinned
 - HScrollBar
 - Checkbox (using FXG for now) 
 - Radiobutton (animations added) 
-- Tabbedviewnavigator (ripple animation added) 
+- Tabbedviewnavigator (ripple animation added, fade between tabs, also swipe effect on 3rd tab to demonstrate hiding tab and actionbar)
 - Textinput 
 - Textarea 
 - TransparentActionButton (ripple animation added) 
