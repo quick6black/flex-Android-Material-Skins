@@ -27,7 +27,8 @@ package spark.skins.android5
 	import spark.components.DataGroup;
 	import spark.components.MobileGrid;
 	import spark.components.Scroller;
-	import spark.components.supportClasses.MobileGridHeader;
+	//import spark.components.supportClasses.MobileGridHeader;
+	import spark.skins.android5.supportClasses.MobileGridHeader
 	import spark.layouts.HorizontalAlign;
 	import spark.layouts.VerticalLayout;
 	import spark.skins.mobile.supportClasses.MobileSkin;
@@ -42,7 +43,7 @@ package spark.skins.android5
 		public var headerGroup:MobileGridHeader;
 		public var scroller:Scroller;
 		public var dataGroup:DataGroup;
-		
+		public var headerHeight:Number; 
 		
 		public function MobileGridSkin()
 		{
@@ -52,31 +53,35 @@ package spark.skins.android5
 			{
 				case DPIClassification.DPI_640:
 				{
-					//add in later
+					headerHeight = 224;
 					break;
 				}
 				case DPIClassification.DPI_480:
 				{
+					headerHeight = 168;
 					minWidth = 200;
 					break;
 				}		
 				case DPIClassification.DPI_320:
 				{
-					//add in later
+					headerHeight = 112;
+					minWidth = 120;
 					break;
 				}
 				case DPIClassification.DPI_240:
 				{
-					//add in later
+					headerHeight = 84;
 					break;
 				}
 				case DPIClassification.DPI_120:
 				{
+					headerHeight = 42;
 					minWidth = 80;
 					break;
 				}
 				default:
 				{
+					headerHeight = 56;
 					minWidth = 100;
 					break;
 				}
@@ -123,7 +128,7 @@ package spark.skins.android5
 			{
 				scroller.viewport = dataGroup;
 			}
-					
+			
 			/* add after, for the drop shadow*/	
 			headerGroup = new MobileGridHeader();
 			headerGroup.id = "hg";
@@ -147,7 +152,7 @@ package spark.skins.android5
 			super.updateDisplayList(unscaledWidth, unscaledHeight);
 			
 			var borderWidth:int = getStyle("borderVisible") ? 1 : 0;
-			var headerHeight:Number = headerGroup.getPreferredBoundsHeight();	
+			//var headerHeight:Number = headerGroup.getPreferredBoundsHeight();	
 			// Background
 			graphics.beginFill(getStyle("contentBackgroundColor"), getStyle("contentBackgroundAlpha"));
 			graphics.drawRect(borderWidth, borderWidth, unscaledWidth - 2 * borderWidth, unscaledHeight - 2 * borderWidth);
