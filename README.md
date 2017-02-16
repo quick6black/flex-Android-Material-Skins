@@ -7,15 +7,16 @@ So far I skinned
 - Actionbar (no animation needed)
 - Buttonbar (animations added)
 - Callout
-- Toggle Switch (animations added)
-- Raised Button (animations added)
+- Checkbox (using FXG for now) 
 - Flat Button (animations added)
 - Circle Button 
-- List (animations added)
 - HSlider (animations added)
 - HScrollBar
-- Checkbox (using FXG for now) 
+- List (animations added)
+- MobileGrid - experimental (ripple animation added)
 - Radiobutton (animations added) 
+- Raised Button (animations added)
+- Toggle Switch (animations added)
 - Tabbedviewnavigator (ripple animation added, fade between tabs, also swipe effect on 3rd tab to demonstrate hiding tab and actionbar)
 - Textinput 
 - Textarea 
@@ -23,7 +24,7 @@ So far I skinned
 - TransparentNavigationButton(ripple animation added) 
 - VScrollBar
 
-- MobileGrid - experimental (ripple animation added) need to rewrite some of the component to property replicate material design
+
 
 I am using all actionscript, so component colors can be configured in CSS. 
 
