@@ -7,22 +7,21 @@ So far I skinned
 - Actionbar
 - ButtonBar 
 - Callout
-- Toggle Switch
+- Checkbox (using FXG for now) 
 - Raised Button
 - Flat Button 
 - Circle Button 
 - HSlider 
 - HScrollBar
-- Checkbox (using FXG for now) 
+- MobileGrid (experimental)
 - Radiobutton 
 - Textinput 
 - Textarea 
 - Tabbedviewnavigator 
+- Toggle Switch
 - TransparentActionButton 
 - TransparentNavigationButton 
 - VScrollBar
-
-- MobileGrid (experimental) To properly replicate the material design the component will have to be modified. 
 
 I am using all actionscript, so component colors can be configured in CSS. 
 
