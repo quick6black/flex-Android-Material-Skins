@@ -156,25 +156,11 @@ CheckBox
 	chromeColor: #FFFFFF;
 }
 
-RadioButton
+HScrollBar
 {
-	skinClass: ClassReference("spark.skins.android5.RadioButtonSkin");
-	backgroundAlpha: 0; /*background alpha*/
-	chromeColor: #000000; /*background color*/
-	selectColor: #ff6868; 
-	unselectColor: #757575;
-	disabledColor: #757575; 
-	inkColor: #000000; /*color of ripple animation*/
-}
-
-ToggleSwitch
-{
-	skinClass: ClassReference("spark.skins.android5.ToggleSwitchSkin");
-	thumbColor: #FFFFFF; /*color of the thumb in the left unselected position*/
-	thumbColorSelected: #009688; /*color of the thumb in the right selected position*/
-	trackColor: #b9b8b8;
-	trackColorSelected: #77c2bb;	
-	slideDuration: 125;
+	skinClass: ClassReference("spark.skins.android5.HScrollBarSkin");
+	thumbColor: #009688;
+	thumbAlpha: .8;
 }
 
 HSlider
@@ -190,6 +176,17 @@ HSlider
 List
 {
 	skinClass: ClassReference("spark.skins.android5.ListSkin");
+}
+
+RadioButton
+{
+	skinClass: ClassReference("spark.skins.android5.RadioButtonSkin");
+	backgroundAlpha: 0; /*background alpha*/
+	chromeColor: #000000; /*background color*/
+	selectColor: #ff6868; 
+	unselectColor: #757575;
+	disabledColor: #757575; 
+	inkColor: #000000; /*color of ripple animation*/
 }
 
 TabbedViewNavigator #tabBar
@@ -208,7 +205,65 @@ TabbedViewNavigator #tabBar
 
 TextInput
 {
+	skinClass: ClassReference("spark.skins.android5.TextInputSkin");
+	contentBackgroundAlpha: 0;
+	borderColor: #4e4e4e;
+	contentBackgroundColor: #DEDEDD;
+	contentBackgroundBorder: "flat";
+	fontFamily: RobotoRegular;
+	selectionHighlighting: "never";
+	focusColor: #009688;
+	focusAlpha: 0;
+	focusEnabled:"false";
+	focusThickness: 2;
+}
+
+TextArea
+{
+	skinClass: ClassReference("spark.skins.android5.TextAreaSkin");
+	contentBackgroundAlpha: 0;
+	contentBackgroundBorder: "flat";
+	contentBackgroundColor: #DEDEDD;
+	focusColor: #009688;
+	borderColor: #4e4e4e;
+	selectionHighlighting: "never";
+	focusAlpha: 0;
+	focusEnabled:"false";
+	focusThickness: 0;
+}
+
+TextInput.stagedInput
+{
 	skinClass: ClassReference("spark.skins.android5.StageTextInputSkin");
+	contentBackgroundAlpha: 0;
+	borderColor: #4e4e4e;
+	contentBackgroundColor: #DEDEDD;
+	contentBackgroundBorder: "flat";
+	fontFamily: RobotoRegular;
+	selectionHighlighting: "never";
+	focusColor: #009688;
+	focusAlpha: 0;
+	focusEnabled:"false";
+	focusThickness: 2;
+}
+
+TextArea.stagedArea
+{
+	skinClass: ClassReference("spark.skins.android5.StageTextAreaSkin");
+	contentBackgroundAlpha: 0;
+	contentBackgroundBorder: "flat";
+	contentBackgroundColor: #DEDEDD;
+	focusColor: #009688;
+	borderColor: #4e4e4e;
+	selectionHighlighting: "never";
+	focusAlpha: 0;
+	focusEnabled:"false";
+	focusThickness: 0;
+}
+
+TextArea.scrollableArea
+{
+	skinClass: ClassReference("spark.skins.android5.ScrollingStageTextAreaSkin");
 	contentBackgroundAlpha: 0;
 	focusColor: #009688;
 	borderColor: #4e4e4e;
@@ -220,24 +275,28 @@ TextInput
 	focusThickness: 0;
 }
 
-TextArea
+TextInput.scrollableInput
 {
-	skinClass: ClassReference("spark.skins.android5.StageTextAreaSkin");
+	skinClass: ClassReference("spark.skins.android5.ScrollingStageTextInputSkin");
 	contentBackgroundAlpha: 0;
-	contentBackgroundBorder: "flat";
-	contentBackgroundColor: #DEDEDD;
 	focusColor: #009688;
 	borderColor: #4e4e4e;
+	contentBackgroundColor: #DEDEDD;
+	contentBackgroundBorder: "flat";
+	fontFamily: RobotoRegular;
 	selectionHighlighting: "never";
 	focusEnabled:"false";
 	focusThickness: 0;
 }
 
-HScrollBar
+ToggleSwitch
 {
-	skinClass: ClassReference("spark.skins.android5.HScrollBarSkin");
-	thumbColor: #009688;
-	thumbAlpha: .8;
+	skinClass: ClassReference("spark.skins.android5.ToggleSwitchSkin");
+	thumbColor: #FFFFFF; /*color of the thumb in the left unselected position*/
+	thumbColorSelected: #009688; /*color of the thumb in the right selected position*/
+	trackColor: #b9b8b8;
+	trackColorSelected: #77c2bb;	
+	slideDuration: 125;
 }
 
 VScrollBar

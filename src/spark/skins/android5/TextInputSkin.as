@@ -296,21 +296,17 @@ package spark.skins.android5
 			{
 				contentBackgroundAlpha = 1;
 			}        
+			// change the border type
 			if (getStyle("contentBackgroundBorder") == "flat")
 			{		
-				var halfGap:int = flatheight * 2;
 				//background
 				graphics.beginFill(contentBackgroundColor, contentBackgroundAlpha);
 				graphics.drawRect(0, 0, unscaledWidth, unscaledHeight - flatheight);
 				graphics.endFill();
 				//begin flat border
 				graphics.beginFill(borderColor, 1);
-				//left half border
-				graphics.drawRect(0, unscaledHeight - halfGap, selectWidth, flatheight );
 				//bottom border
 				graphics.drawRect(0, unscaledHeight - flatheight, unscaledWidth, selectWidth);
-				//right border
-				graphics.drawRect(unscaledWidth - selectWidth, unscaledHeight - halfGap, selectWidth, flatheight);
 				graphics.endFill();
 			}
 			else if (getStyle("contentBackgroundBorder") == "rectangle")
