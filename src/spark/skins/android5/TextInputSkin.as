@@ -22,7 +22,6 @@ package spark.skins.android5
 	import flash.events.Event;
 	import flash.events.FocusEvent;
 	import flash.events.SoftKeyboardEvent;
-	import flash.system.Capabilities;
 	
 	import mx.core.DPIClassification;
 	import mx.core.EventPriority;
@@ -81,7 +80,7 @@ package spark.skins.android5
 				}
 				case DPIClassification.DPI_480:
 				{
-
+					
 					measuredDefaultWidth = 880;
 					measuredDefaultHeight = 100;
 					layoutBorderSize = 3;
@@ -121,6 +120,7 @@ package spark.skins.android5
 					break;
 				}
 			}
+			
 			addEventListener(FocusEvent.FOCUS_IN, focusChangeHandler);
 			addEventListener(FocusEvent.FOCUS_OUT, focusChangeHandler);
 		}
@@ -139,7 +139,7 @@ package spark.skins.android5
 		 *  @copy spark.skins.spark.ApplicationSkin#hostComponent
 		 */
 		public var hostComponent:TextInput;  // SkinnableComponent will populate
-			
+		
 		/**
 		 *  @private
 		 */
@@ -296,21 +296,17 @@ package spark.skins.android5
 			{
 				contentBackgroundAlpha = 1;
 			}        
+			// change the border type
 			if (getStyle("contentBackgroundBorder") == "flat")
 			{		
-				var halfGap:int = flatheight * 2;
 				//background
 				graphics.beginFill(contentBackgroundColor, contentBackgroundAlpha);
 				graphics.drawRect(0, 0, unscaledWidth, unscaledHeight - flatheight);
 				graphics.endFill();
 				//begin flat border
 				graphics.beginFill(borderColor, 1);
-				//left half border
-				graphics.drawRect(0, unscaledHeight - halfGap, selectWidth, flatheight );
 				//bottom border
 				graphics.drawRect(0, unscaledHeight - flatheight, unscaledWidth, selectWidth);
-				//right border
-				graphics.drawRect(unscaledWidth - selectWidth, unscaledHeight - halfGap, selectWidth, flatheight);
 				graphics.endFill();
 			}
 			else if (getStyle("contentBackgroundBorder") == "rectangle")
