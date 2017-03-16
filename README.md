@@ -14,6 +14,7 @@ So far I skinned
 - HSlider 
 - HScrollBar
 - MobileGrid (experimental)
+- NumericStepper
 - Radiobutton 
 - Textinput 
 - Textarea 

@@ -30,6 +30,7 @@
 	<s:Scroller width="100%" height="100%">	
 		<s:VGroup width="100%" height="100%" horizontalAlign="center">	
 			<s:Spacer height="10"/>
+			<s:NumericStepper horizontalCenter="0" verticalCenter="0" textAlign="center" interactionMode="touch"/>
 			<s:Button label="Raised" left="100" color="0xFFFFFF"/>
 			<s:Button label="Flat" left="100" color="0x000000" styleName="flat"/>
 			<s:Button left="100" color="0x000000" styleName="circle" icon="{overflowIcon}"/>
