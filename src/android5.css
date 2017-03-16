@@ -208,6 +208,7 @@ TextInput.numericStepper
 	selectionHighlighting: "never";
 	focusEnabled:"false";
 	focusThickness: 0;
+	paddingBottom: 0;
 }
 
 RadioButton
