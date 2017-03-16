@@ -14,6 +14,7 @@ So far I skinned
 - HScrollBar
 - List (animations added)
 - MobileGrid - experimental (ripple animation added)
+- NumericStepper (ripple animation added)
 - Radiobutton (animations added) 
 - Raised Button (animations added)
 - Toggle Switch (animations added)

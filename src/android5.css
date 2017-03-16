@@ -178,6 +178,38 @@ List
 	skinClass: ClassReference("spark.skins.android5.ListSkin");
 }
 
+NumericStepper
+{
+	skinClass: ClassReference("spark.skins.android5.NumericStepperSkin");
+}
+
+Button.numericStepperBTN
+{
+	fontFamily: RobotoBold;
+	fontWeight: "bold";
+	contentBackgroundBorder: "flat";	
+	skinClass: ClassReference("spark.skins.android5.NumericStepperButtonSkin");
+	chromeColor: #009688;
+	downColor: #b9b8b8;
+	downAlpha: 0.1;
+	inkColor: #c6e0fb;
+	arrowColor: #000000;
+}
+
+TextInput.numericStepper
+{
+	skinClass: ClassReference("spark.skins.android5.ScrollingStageTextInputSkin");
+	contentBackgroundAlpha: 0;
+	focusColor: #009688;
+	borderColor: #4e4e4e;
+	contentBackgroundColor: #DEDEDD;
+	contentBackgroundBorder: "noBorder";
+	fontFamily: RobotoRegular;
+	selectionHighlighting: "never";
+	focusEnabled:"false";
+	focusThickness: 0;
+}
+
 RadioButton
 {
 	skinClass: ClassReference("spark.skins.android5.RadioButtonSkin");
