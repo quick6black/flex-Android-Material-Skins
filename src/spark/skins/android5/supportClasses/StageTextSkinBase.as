@@ -259,6 +259,13 @@ public class StageTextSkinBase extends MobileSkin
 			graphics.drawRect(layoutBorderSize, layoutBorderSize, unscaledWidth - borderWidth, unscaledHeight - borderWidth);
 			graphics.endFill();
 		}
+		else if (getStyle("contentBackgroundBorder") == "noBorder")
+		{		
+			//background
+			graphics.beginFill(contentBackgroundColor, contentBackgroundAlpha);
+			graphics.drawRect(0, 0, unscaledWidth, unscaledHeight - flatheight);
+			graphics.endFill();
+		}	
     }
     
     /**
