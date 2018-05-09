@@ -18,7 +18,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 package spark.skins.android5
-{
+{	
 	/**
 	 *  Android 5.x specific Button skin for the Button in a ButtonBar.
 	 * 
@@ -33,8 +33,9 @@ package spark.skins.android5
 	[Style(name="downColor", type="uint", format="Color", inherit="yes")]
 	[Style(name="selectColor", type="uint", format="Color", inherit="yes")]
 	
+	
 	public class ButtonBarButtonSkin extends ButtonSkin
-	{	
+	{
 		/**
 		 *  Constructor.
 		 * 
@@ -47,7 +48,7 @@ package spark.skins.android5
 		{
 			super();
 		}
-
+		
 		//--------------------------------------------------------------------------
 		//
 		//  Overridden methods
@@ -81,6 +82,7 @@ package spark.skins.android5
 				graphics.beginFill(selectColor, backgroundAlpha);
 				graphics.drawRect(0, 0, unscaledWidth, unscaledHeight);
 				graphics.endFill();
+				destroyRipples();
 			}
 			if (currentState == "overAndSelected")
 			{
@@ -93,6 +95,7 @@ package spark.skins.android5
 				graphics.beginFill(chromeColor, backgroundAlpha);
 				graphics.drawRect(0, 0, unscaledWidth, unscaledHeight);
 				graphics.endFill();
+				destroyRipples();
 			}
 		}
 	}

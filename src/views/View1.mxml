@@ -30,6 +30,14 @@
 	<s:Scroller width="100%" height="100%">	
 		<s:VGroup width="100%" height="100%" horizontalAlign="center">	
 			<s:Spacer height="10"/>
+			<s:ButtonBar id="buttonBAR">
+				<s:ArrayList>
+					<s:Button label="Button 1"/>
+					<s:Button label="Button 2"/>
+					<s:Button label="Button 3"/>
+				</s:ArrayList>
+			</s:ButtonBar>
+			<s:Label text="{buttonBAR.selectedIndex}"/>
 			<s:NumericStepper horizontalCenter="0" verticalCenter="0" textAlign="center" interactionMode="touch"/>
 			<s:Button label="Raised" left="100" color="0xFFFFFF"/>
 			<s:Button label="Flat" left="100" color="0x000000" styleName="flat"/>
@@ -48,7 +56,7 @@
 				<s:TextInput prompt="Staged TextInput" styleName="stagedInput"/>
 				<s:TextArea prompt="Staged TextArea" height="100" styleName="stagedArea"/>	
 				<s:TextInput prompt="TextInput Scrollable" styleName="scrollableInput"/>
-				<s:TextArea prompt="TextArea Scrollable" styleName="scrollableArea" height="100"/>	
+				<s:TextArea prompt="TextArea Scrollable" styleName="scrollableArea" height="100"/>
 				<s:HSlider width="100%" snapInterval="0" minimum="0" maximum="100"/>
 			</s:VGroup>
 		</s:VGroup>
