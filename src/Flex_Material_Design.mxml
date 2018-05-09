@@ -9,6 +9,7 @@
 			import spark.events.IndexChangeEvent;
 			import assets.icon;
 			
+			
 			protected function tabbedviewnavigatorAppComplete(event:FlexEvent):void
 			{
 				tab1.label = "1";
@@ -50,3 +51,6 @@
 	<s:ViewNavigator id="tab3" firstView="views.View5" width="100%" height="100%" icon="{icon}"/>
 	<s:ViewNavigator id="tab4" firstView="views.View6" width="100%" height="100%" icon="{icon}"/>
 </s:TabbedViewNavigatorApplication>
+
+
+

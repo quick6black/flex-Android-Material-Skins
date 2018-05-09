@@ -17,7 +17,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 package spark.skins.android5
-{
+{	
 	import mx.core.DPIClassification;
 	
 	import spark.components.ButtonBarButton;
@@ -53,7 +53,8 @@ package spark.skins.android5
 					break;
 				}
 				case DPIClassification.DPI_240:
-				{		
+				{
+					
 					flatheight = 5;
 					break;
 				}
@@ -115,12 +116,13 @@ package spark.skins.android5
 			// TabbedViewNavigatorSkin sets a hard-coded value to support
 			// overlayControls
 			var backgroundAlphaValue:* = getStyle("backgroundAlpha");
-			var backgroundAlpha:Number = (backgroundAlphaValue === undefined) ? 1 : getStyle("backgroundAlpha");
+			var backgroundAlpha:Number = (backgroundAlphaValue === undefined)
+				? 1 : getStyle("backgroundAlpha");
 			
 			graphics.beginFill(getStyle("chromeColor"), backgroundAlpha);
 			graphics.drawRect(0, 0, unscaledWidth, unscaledHeight);
 			graphics.endFill();
-			//add in bottom border
+			
 			graphics.lineStyle(flatheight, getStyle("borderColor"), 1, true); 
 			graphics.drawRect(0, 0, unscaledWidth - 1, unscaledHeight - 1);
 		}

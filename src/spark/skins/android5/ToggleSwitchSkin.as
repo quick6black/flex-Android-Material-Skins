@@ -24,15 +24,18 @@ package spark.skins.android5
 	import flash.display.Graphics;
 	import flash.display.Sprite;
 	import flash.events.Event;
-	import flash.filters.DropShadowFilter;
+	import flash.events.FocusEvent;
 	
 	import mx.core.DPIClassification;
 	import mx.core.IVisualElement;
 	import mx.core.UIComponent;
 	import mx.core.mx_internal;
+	import mx.graphics.RectangularDropShadow;
 	
+	import spark.components.Group;
 	import spark.components.ToggleSwitch;
 	import spark.core.SpriteVisualElement;
+	import spark.skins.android5.supportClasses.InkRipple;
 	import spark.skins.mobile.supportClasses.MobileSkin;
 	
 	use namespace mx_internal;
@@ -42,6 +45,8 @@ package spark.skins.android5
 		public function ToggleSwitchSkin()
 		{
 			super();	
+			
+			dropShadowAlpha = 0.3;
 			
 			switch(applicationDPI) 
 			{	
@@ -54,7 +59,7 @@ package spark.skins.android5
 					
 					dropShadowBlurX = 15;
 					dropShadowBlurY = 15;
-					dropShadowDistance = 8;
+					dropShadowDistance = 5;
 					
 					break;
 				}
@@ -67,7 +72,7 @@ package spark.skins.android5
 					
 					dropShadowBlurX = 12;
 					dropShadowBlurY = 12;
-					dropShadowDistance = 6;
+					dropShadowDistance = 4;
 					
 					break;
 				}		
@@ -80,7 +85,7 @@ package spark.skins.android5
 					
 					dropShadowBlurX = 10;
 					dropShadowBlurY = 10;
-					dropShadowDistance = 6;	
+					dropShadowDistance = 3;	
 					
 					break;
 				}
@@ -93,7 +98,7 @@ package spark.skins.android5
 					
 					dropShadowBlurX = 8;
 					dropShadowBlurY = 8;
-					dropShadowDistance = 6;
+					dropShadowDistance = 2;
 					
 					break;
 				}
@@ -106,7 +111,7 @@ package spark.skins.android5
 					
 					dropShadowBlurX = 4;
 					dropShadowBlurY = 4;
-					dropShadowDistance = 3;
+					dropShadowDistance = 1;
 					
 					break;
 				}
@@ -119,7 +124,7 @@ package spark.skins.android5
 					
 					dropShadowBlurX = 5;
 					dropShadowBlurY = 5;
-					dropShadowDistance = 4;	
+					dropShadowDistance = 1;	
 					
 					break;
 				}
@@ -136,9 +141,12 @@ package spark.skins.android5
 		protected var trackCurve:Number;
 		protected var layoutThumbWidth:Number;
 		
-		protected var dropShadowBlurX:Number;		
-		protected var dropShadowBlurY:Number;		
-		protected var dropShadowDistance:Number;	
+		
+		private var dropShadowBlurX:Number;		
+		private var dropShadowBlurY:Number;		
+		private var dropShadowDistance:Number;		
+		private var dropShadow:RectangularDropShadow;		
+		private var dropShadowAlpha:Number;	
 		
 		private var slidingContentBackground:SpriteVisualElement;
 		private var slidingContentForeground:UIComponent;
@@ -149,23 +157,26 @@ package spark.skins.android5
 		private var thumbContent:Sprite;
 		public var thumb:IVisualElement;
 		public var track:IVisualElement;
-
+		
+		public var inkHolder:Group;
+		
+		private var currentRipple:InkRipple; 
+		
 		override public function set currentState(value:String):void 
 		{
 			super.currentState = value;		
-	
 			invalidateDisplayList();
 		}
-
+		
 		private var _hostComponent:ToggleSwitch;
-
+		
 		public function get hostComponent():ToggleSwitch 
 		{
 			return _hostComponent;
 		}
-
+		
 		public function set hostComponent(value:ToggleSwitch):void 
-		{
+		{		
 			if (_hostComponent)
 				_hostComponent.removeEventListener("thumbPositionChanged", thumbPositionChanged_handler);
 			_hostComponent = value;
@@ -209,7 +220,19 @@ package spark.skins.android5
 			else
 			{
 				alpha = 1.0;
-			}				
+			}
+			if (currentState && currentState.indexOf("upAndSelected") >= 0) 
+			{
+				destroyRipples();
+			}
+			if (currentState && currentState.indexOf("downAndSelected") >= 0) 
+			{
+				destroyRipples();
+			}
+			if (currentState && currentState.indexOf("up") >= 0) 
+			{
+				destroyRipples();
+			}
 		}
 		
 		override protected function createChildren():void 
@@ -236,7 +259,12 @@ package spark.skins.android5
 			contents.addChild(SpriteVisualElement(thumb));
 			
 			thumbContent = new Sprite();
-			SpriteVisualElement(thumb).addChild(thumbContent);
+			SpriteVisualElement(thumb).addChild(thumbContent);	
+			
+			//material animations
+			inkHolder = new Group();
+			inkHolder.id = "inkHolder";
+			SpriteVisualElement(thumb).addChild(inkHolder);
 		}
 		
 		private function drawTrack(skinWidth:Number, skinHeight:Number):void 
@@ -267,34 +295,34 @@ package spark.skins.android5
 		{
 			var graphics:Graphics = thumbContent.graphics;
 			var thumbColor:uint = getStyle("thumbColor");
-			var thumbColorSelected:uint = getStyle("thumbColorSelected");
-			graphics.clear();			
+			var thumbColorSelected:uint = getStyle("thumbColorSelected");			
+			graphics.clear();	
 			if (currentState && currentState.indexOf("down") >= 0)
 			{
-				//down graphic
-				if(currentState.indexOf("AndSelected") != -1)
-				{
-					graphics.beginFill(thumbColorSelected, .3);   
-				}
-				else
-				{
-					graphics.beginFill(0x000000, .3);  
-				}
-				graphics.drawCircle(0, skinHeight/2, layoutThumbWidth / 1.3);
-				graphics.endFill();
+				addRipple();	
 			}
-			var dropshadowFilter:DropShadowFilter = new DropShadowFilter(dropShadowDistance, 90, 0x000000, 0.3, dropShadowBlurX, dropShadowBlurY);
 			if(currentState.indexOf("AndSelected") != -1)
 			{
-				graphics.beginFill(thumbColorSelected, 1);   
+				graphics.beginFill(thumbColorSelected, 1); 
 			}
+				
 			else
 			{
 				graphics.beginFill(thumbColor, 1); 
-			}
+			}	
 			graphics.drawCircle(0, skinHeight/2, layoutThumbWidth /2);
-			graphics.lineStyle();
-			thumbContent.filters = [dropshadowFilter];
+			graphics.endFill();
+			dropShadow = new RectangularDropShadow();
+			dropShadow.angle = 90;
+			dropShadow.distance = dropShadowDistance;
+			dropShadow.blurX = dropShadowBlurX;
+			dropShadow.blurY = dropShadowBlurY;
+			dropShadow.alpha = dropShadowAlpha;
+			dropShadow.tlRadius = dropShadow.trRadius = dropShadow.blRadius = dropShadow.brRadius = layoutThumbWidth/2;
+			dropShadow.drawShadow(graphics, 0 - skinHeight/2, 0, layoutThumbWidth, layoutThumbWidth);
+			
+			setElementSize(inkHolder, unscaledWidth, unscaledHeight);
+			setElementPosition(inkHolder, 0 - unscaledWidth, layoutThumbWidth /2);
 		}
 		
 		private function moveSlidingContent():void 
@@ -309,6 +337,40 @@ package spark.skins.android5
 		private function thumbPositionChanged_handler(event:Event):void 
 		{
 			moveSlidingContent();
+		}	
+		
+		protected function addRipple():void
+		{
+			var thumbColor:uint = 0x000000;
+			var thumbColorSelected:uint = getStyle("thumbColorSelected");				
+			if (inkHolder.numElements == 0)
+			{
+				var rippleRadius:Number =  Math.sqrt(width*width+height*height); 
+				if (currentState.indexOf("AndSelected") != -1)
+				{
+					currentRipple = new InkRipple(0, 0, rippleRadius * 1.5, thumbColorSelected, 300); 
+				}
+				else
+				{
+					currentRipple = new InkRipple(0, 0, rippleRadius * 1.5, thumbColor, 300); 
+				}	
+				currentRipple.owner = inkHolder; 
+				inkHolder.addElement(currentRipple); 
+			}
+			else
+			{
+				//do nothing
+			}
+		}
+		
+		protected function destroyRipples():void 
+		{ 
+			for(var i:int=0; i < inkHolder.numElements; i++) 
+			{ 
+				inkHolder.getElementAt(i)["destroy"](true); 
+			} 
 		}
 	}
+	
+	
 }

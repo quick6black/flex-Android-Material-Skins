@@ -27,7 +27,7 @@ global
 }
 ActionBar
 {
-	chromeColor: #009688;
+	chromeColor: #106CC8;
 	skinClass: ClassReference("spark.skins.android5.ActionBarSkin");
 	paddingBottom: 0;
 	paddingLeft: 0;
@@ -53,19 +53,21 @@ ActionBar ButtonBase
 ActionBar Group#actionGroup Button
 {
 	skinClass: ClassReference("spark.skins.android5.TransparentActionButtonSkin");
-	chromeColor: #009688;
-	downColor: #b9b8b8;
+	chromeColor: #106CC8;
+	downColor: #106CC8;
 	downAlpha: 0.7;
 	color: #FFFFFF;
+	inkColor: #c6e0fb;
 }
 
 ActionBar Group#navigationGroup Button
 {
 	skinClass: ClassReference("spark.skins.android5.TransparentNavigationButtonSkin");
-	chromeColor: #009688;
-	downColor: #b9b8b8;
+	chromeColor: #106CC8;
+	downColor: #106CC8;
 	downAlpha: 0.7;
 	color: #FFFFFF;
+	inkColor: #c6e0fb;
 }
 
 Button
@@ -74,9 +76,10 @@ Button
 	fontWeight: "bold";
 	contentBackgroundBorder: "raised";
 	skinClass: ClassReference("spark.skins.android5.ButtonSkin");
-	chromeColor: #009688;
-	downColor: #b9b8b8;
-	downAlpha: 0.7;
+	chromeColor: #106CC8;
+	downColor: #106CC8;
+	downAlpha: 0.8;
+	inkColor: #c6e0fb;
 }
 
 Button.flat
@@ -87,7 +90,34 @@ Button.flat
 	skinClass: ClassReference("spark.skins.android5.ButtonSkin");
 	chromeColor: #009688;
 	downColor: #b9b8b8;
-	downAlpha: 0.7;
+	downAlpha: 0.1;
+	inkColor: #c6e0fb;
+}
+
+Button.warn
+{
+	fontFamily: RobotoBold;
+	fontWeight: "bold";
+	contentBackgroundBorder: "raised";
+	skinClass: ClassReference("spark.skins.android5.ButtonSkin");
+	chromeColor: #f44336;
+	downColor: #f44336;
+	downAlpha: 0.8;
+	inkColor: #f68f89;
+	color: #ffffff;
+}
+
+Button.flat-warn
+{
+	fontFamily: RobotoBold;
+	fontWeight: "bold";
+	contentBackgroundBorder: "flat";
+	skinClass: ClassReference("spark.skins.android5.ButtonSkin");
+	chromeColor: #f44336;
+	downColor: #b9b8b8;
+	downAlpha: 0.1;
+	inkColor: #f68f89;
+	color: #f44336;
 }
 
 Button.circle
@@ -102,11 +132,11 @@ Button.circle
 
 ButtonBar
 {
-	skinClass: ClassReference("spark.skins.android5.ButtonBarSkin");
-	color: #007AFF; /*font color*/
+	skinClass: ClassReference("spark.skins.android5.ButtonBarSkin");	
+	color: #FFFFFF; /*font color*/
 	fontFamily: RobotoRegular;
 	fontWeight: normal;
-	chromeColor: #009688;
+	chromeColor: #00BCD4;
 	downColor: #b9b8b8;
 	selectColor: #b9b8b8;
 	backgroundAlpha: 1;
@@ -143,6 +173,11 @@ HSlider
 	datatipColor: #009688; /*color datatip background when dragged*/
 }
 
+List
+{
+	skinClass: ClassReference("spark.skins.android5.ListSkin");
+}
+
 NumericStepper
 {
 	skinClass: ClassReference("spark.skins.android5.NumericStepperSkin");
@@ -156,7 +191,8 @@ Button.numericStepperBTN
 	skinClass: ClassReference("spark.skins.android5.NumericStepperButtonSkin");
 	chromeColor: #009688;
 	downColor: #b9b8b8;
-	downAlpha: 0.7;
+	downAlpha: 0.1;
+	inkColor: #c6e0fb;
 	arrowColor: #000000;
 }
 
@@ -172,6 +208,7 @@ TextInput.numericStepper
 	selectionHighlighting: "never";
 	focusEnabled:"false";
 	focusThickness: 0;
+	paddingBottom: 0;
 }
 
 RadioButton
@@ -179,8 +216,10 @@ RadioButton
 	skinClass: ClassReference("spark.skins.android5.RadioButtonSkin");
 	backgroundAlpha: 0; /*background alpha*/
 	chromeColor: #000000; /*background color*/
-	selectColor: #009688; 
-	unselectColor: #6D6D6D;
+	selectColor: #ff6868; 
+	unselectColor: #757575;
+	disabledColor: #757575; 
+	inkColor: #000000; /*color of ripple animation*/
 }
 
 TabbedViewNavigator #tabBar
@@ -196,7 +235,6 @@ TabbedViewNavigator #tabBar
 	downColor: #b9b8b8; /*grey*/
 	selectColor: #b9b8b8; /*grey*/
 }
-
 
 TextInput
 {
@@ -256,9 +294,9 @@ TextArea.stagedArea
 	focusThickness: 0;
 }
 
-TextInput.scrollableInput
+TextArea.scrollableArea
 {
-	skinClass: ClassReference("spark.skins.android5.ScrollingStageTextInputSkin");
+	skinClass: ClassReference("spark.skins.android5.ScrollingStageTextAreaSkin");
 	contentBackgroundAlpha: 0;
 	focusColor: #009688;
 	borderColor: #4e4e4e;
@@ -270,9 +308,9 @@ TextInput.scrollableInput
 	focusThickness: 0;
 }
 
-TextArea.scrollableArea
+TextInput.scrollableInput
 {
-	skinClass: ClassReference("spark.skins.android5.ScrollingStageTextAreaSkin");
+	skinClass: ClassReference("spark.skins.android5.ScrollingStageTextInputSkin");
 	contentBackgroundAlpha: 0;
 	focusColor: #009688;
 	borderColor: #4e4e4e;

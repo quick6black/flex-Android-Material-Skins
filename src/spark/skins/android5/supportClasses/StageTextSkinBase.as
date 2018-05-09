@@ -263,7 +263,7 @@ public class StageTextSkinBase extends MobileSkin
 		{		
 			//background
 			graphics.beginFill(contentBackgroundColor, contentBackgroundAlpha);
-			graphics.drawRect(0, 0, unscaledWidth, unscaledHeight - flatheight);
+			graphics.drawRect(0, 0, unscaledWidth, unscaledHeight);
 			graphics.endFill();
 		}	
     }

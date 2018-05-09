@@ -19,6 +19,8 @@
 
 package spark.skins.android5
 {
+	import flash.events.MouseEvent;
+	
 	import mx.core.DPIClassification;
 	import mx.core.mx_internal;
 	import mx.graphics.RectangularDropShadow;
@@ -27,9 +29,13 @@ package spark.skins.android5
 	import spark.components.Group;
 	import spark.core.SpriteVisualElement;
 	import spark.primitives.Path;
+	import spark.skins.android5.supportClasses.InkRipple;
 	import spark.skins.mobile.supportClasses.ButtonSkinBase;
 	
 	use namespace mx_internal;
+	
+	[Style(name="inkColor", type="uint", format="Color", inherit="yes", defaultValue="#999999")]
+
 	
 	public class NumericStepperButtonSkin extends ButtonSkinBase
 	{	
@@ -50,6 +56,10 @@ package spark.skins.android5
 		private var backgroundFill:SpriteVisualElement;
 		//scale factor for arrow
 		private var arrowBTNPathScale:Number;
+		
+		public var inkHolder:Group;
+		
+		private var currentRipple:InkRipple; 
 		
 		public function NumericStepperButtonSkin()
 		{
@@ -189,6 +199,7 @@ package spark.skins.android5
 		override protected function createChildren():void
 		{
 			super.createChildren();
+			hostComponent.addEventListener(MouseEvent.MOUSE_DOWN, onDown);
 			//add in group for icon path
 			var group:Group = new Group();
 			group.width = group.height = measuredDefaultHeight;
@@ -201,6 +212,13 @@ package spark.skins.android5
 			btnPath.horizontalCenter = 0;
 			btnPath.verticalCenter = 0;
 			group.addElement(btnPath);
+					
+			inkHolder = new Group();
+			inkHolder.id = "inkHolder";	
+			inkHolder.clipAndEnableScrolling = true;
+			inkHolder.width = this.width;
+			inkHolder.height = this.height;
+			addChild(inkHolder);
 		}
 		
 		/**
@@ -215,6 +233,9 @@ package spark.skins.android5
 		override protected function layoutContents(unscaledWidth:Number, unscaledHeight:Number):void
 		{
 			super.layoutContents(unscaledWidth, unscaledHeight);
+			
+			setElementSize(inkHolder, unscaledWidth, unscaledHeight);
+			setElementPosition(inkHolder, 0, 0);
 		}
 		
 		override protected function drawBackground(unscaledWidth:Number, unscaledHeight:Number):void
@@ -254,6 +275,7 @@ package spark.skins.android5
 					dropShadow.alpha = dropShadowAlpha;
 					dropShadow.tlRadius = dropShadow.trRadius = dropShadow.blRadius = dropShadow.brRadius = cornerRadius;
 					dropShadow.drawShadow(graphics, 0, 0, unscaledWidth, unscaledHeight); 
+					destroyRipples();
 				}
 			}
 			if (getStyle("contentBackgroundBorder") == "flat")
@@ -269,8 +291,28 @@ package spark.skins.android5
 					graphics.beginFill(chromeColor, 0);
 					graphics.drawRoundRectComplex(0, 0, unscaledWidth, unscaledHeight, cornerRadius, cornerRadius, cornerRadius, cornerRadius);
 					graphics.endFill();
+					destroyRipples();
 				}
 			}	
 		}
+		
+		protected function destroyRipples():void 
+		{ 
+			for(var i:int=0; i < inkHolder.numElements; i++) 
+			{ 
+				inkHolder.getElementAt(i)["destroy"](true); 
+			} 
+		}
+		
+		private function onDown(event:MouseEvent):void 
+		{ 
+			var inkColor:uint = getStyle("inkColor");
+			if(currentRipple) 
+				currentRipple.isMouseDown = false; 
+			var rippleRadius:Number =  Math.sqrt(width*width+height*height); 
+			currentRipple = new InkRipple(event["localX"], event["localY"], rippleRadius*2, inkColor, 1200); 
+			currentRipple.owner = inkHolder; 
+			inkHolder.addElement(currentRipple); 
+		} 
 	}
 }

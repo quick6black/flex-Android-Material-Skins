@@ -17,8 +17,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 package spark.skins.android5
-{
-	
+{	
 	import spark.skins.android5.supportClasses.TabbedViewNavigatorTabBarTabSkinBase;
 	
 	[Style(name="downColor", type="uint", format="Color", inherit="yes")]
@@ -58,6 +57,7 @@ package spark.skins.android5
 				graphics.beginFill(selectColor, backgroundAlpha);
 				graphics.drawRect(0, 0, unscaledWidth, unscaledHeight);
 				graphics.endFill();
+				destroyRipples();
 			}
 			if (currentState == "overAndSelected")
 			{
@@ -70,6 +70,7 @@ package spark.skins.android5
 				graphics.beginFill(chromeColor, backgroundAlpha);
 				graphics.drawRect(0, 0, unscaledWidth, unscaledHeight);
 				graphics.endFill();
+				destroyRipples();
 			}
 		}
 	}
