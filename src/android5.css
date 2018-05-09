@@ -94,6 +94,18 @@ Button.flat
 	inkColor: #c6e0fb;
 }
 
+Button.rounded
+{
+	fontFamily: RobotoBold;
+	fontWeight: "bold";
+	contentBackgroundBorder: "rounded";
+	skinClass: ClassReference("spark.skins.android5.ButtonSkin");
+	chromeColor: #009688;
+	downColor: #b9b8b8;
+	downAlpha: 0.7;
+	color: #FFFFFF;
+}
+
 Button.warn
 {
 	fontFamily: RobotoBold;

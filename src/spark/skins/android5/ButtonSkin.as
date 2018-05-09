@@ -44,6 +44,8 @@ package spark.skins.android5
 		
 		protected var cornerRadius:int;	
 		
+		protected var roundedCornerRadius:int;
+		
 		private var dropShadowBlurX:Number;
 		
 		private var dropShadowBlurY:Number;
@@ -78,7 +80,7 @@ package spark.skins.android5
 					measuredDefaultHeight = 144;
 					circleRadius = 80;
 					cornerRadius = 10;	
-					
+					roundedCornerRadius=80;
 					dropShadowBlurX = 10;
 					dropShadowBlurY = 10;
 					dropShadowDistance = 5;
@@ -93,7 +95,7 @@ package spark.skins.android5
 					measuredDefaultHeight = 108;
 					circleRadius = 60;
 					cornerRadius = 8;
-					
+					roundedCornerRadius=60;
 					dropShadowBlurX = 8;
 					dropShadowBlurY = 8;
 					dropShadowDistance = 4;
@@ -107,7 +109,7 @@ package spark.skins.android5
 					measuredDefaultWidth = 172;
 					measuredDefaultHeight = 72;
 					circleRadius = 40;
-					
+					roundedCornerRadius=40;
 					cornerRadius = 6;
 					dropShadowBlurX = 6;
 					dropShadowBlurY = 6;
@@ -122,7 +124,7 @@ package spark.skins.android5
 					measuredDefaultHeight = 45;
 					circleRadius = 30;
 					cornerRadius = 4;	
-					
+					roundedCornerRadius=30;
 					dropShadowBlurX = 4;
 					dropShadowBlurY = 4;
 					dropShadowDistance = 2;
@@ -240,6 +242,38 @@ package spark.skins.android5
 					dropShadow.blurY = dropShadowBlurY;
 					dropShadow.alpha = dropShadowAlpha;
 					dropShadow.tlRadius = dropShadow.trRadius = dropShadow.blRadius = dropShadow.brRadius = cornerRadius;
+					dropShadow.drawShadow(graphics, 0, 0, unscaledWidth, unscaledHeight); 
+					destroyRipples();
+				}
+			}
+			if (getStyle("contentBackgroundBorder") == "rounded")
+			{
+				if (currentState == "down")
+				{	
+					graphics.beginFill(downColor, downAlpha);
+					graphics.drawRoundRectComplex(0, 0, unscaledWidth, unscaledHeight, roundedCornerRadius, roundedCornerRadius, roundedCornerRadius, roundedCornerRadius);
+					graphics.endFill();
+					dropShadow = new RectangularDropShadow();
+					dropShadow.angle = 90;
+					dropShadow.distance = dropShadowDistance * 2;
+					dropShadow.blurX = dropShadowBlurX;
+					dropShadow.blurY = dropShadowBlurY;
+					dropShadow.alpha = dropShadowAlpha;
+					dropShadow.tlRadius = dropShadow.trRadius = dropShadow.blRadius = dropShadow.brRadius = roundedCornerRadius;
+					dropShadow.drawShadow(graphics, 0, 0, unscaledWidth, unscaledHeight); 
+				}
+				else
+				{
+					graphics.beginFill(chromeColor, backgroundAlphaValue);
+					graphics.drawRoundRectComplex(0, 0, unscaledWidth, unscaledHeight, roundedCornerRadius, roundedCornerRadius, roundedCornerRadius, roundedCornerRadius);
+					graphics.endFill();
+					dropShadow = new RectangularDropShadow();
+					dropShadow.angle = 90;
+					dropShadow.distance = dropShadowDistance;
+					dropShadow.blurX = dropShadowBlurX;
+					dropShadow.blurY = dropShadowBlurY;
+					dropShadow.alpha = dropShadowAlpha;
+					dropShadow.tlRadius = dropShadow.trRadius = dropShadow.blRadius = dropShadow.brRadius = roundedCornerRadius;
 					dropShadow.drawShadow(graphics, 0, 0, unscaledWidth, unscaledHeight); 
 					destroyRipples();
 				}
