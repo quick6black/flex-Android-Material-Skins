@@ -24,14 +24,50 @@ import spark.components.DataGroup;
 import spark.skins.mobile.supportClasses.ButtonBarButtonClassFactory;
 import spark.skins.mobile.supportClasses.TabbedViewNavigatorTabBarHorizontalLayout;
 
+/**
+ *  The Android 5.x specific skin class for the Spark TabbedViewNavigator tabBar skin part.
+ *  It uses the ButtonBarFirstButtonSkin and ButtonBarMiddleButtonSkin as skins for first
+ *  middle buttons
+ *  
+ *  @see spark.components.TabbedViewNavigator#tabBar
+ *  
+ *  @langversion 3.0
+ *  @playerversion Flash 10
+ *  @playerversion AIR 2.5
+ *  @productversion Flex 4.5
+ */
 public class TabbedViewNavigatorTabBarSkin extends ButtonBarSkin
 {
+    //--------------------------------------------------------------------------
+    //
+    //  Constructor
+    //
+    //--------------------------------------------------------------------------
+    
+    /**
+     *  Constructor.
+     * 
+     *  @langversion 3.0
+     *  @playerversion Flash 10
+     *  @playerversion AIR 2.5 
+     *  @productversion Flex 4.5
+     * 
+     */
     public function TabbedViewNavigatorTabBarSkin()
     {
         super();
     }
-
-   override protected function createChildren():void
+    
+    //--------------------------------------------------------------------------
+    //
+    //  Overridden methods
+    //
+    //--------------------------------------------------------------------------
+    
+    /**
+     *  @private
+     */
+    override protected function createChildren():void
     {
         if (!firstButton)
         {
@@ -74,7 +110,8 @@ public class TabbedViewNavigatorTabBarSkin extends ButtonBarSkin
         // TabbedViewNavigatorSkin sets a hard-coded value to support
         // overlayControls
         var backgroundAlphaValue:* = getStyle("backgroundAlpha");
-        var backgroundAlpha:Number = (backgroundAlphaValue === undefined) ? 1 : getStyle("backgroundAlpha");
+        var backgroundAlpha:Number = (backgroundAlphaValue === undefined)
+            ? 1 : getStyle("backgroundAlpha");
         
         graphics.beginFill(getStyle("chromeColor"), backgroundAlpha);
         graphics.drawRect(0, 0, unscaledWidth, unscaledHeight);
