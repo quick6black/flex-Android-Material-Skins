@@ -17,6 +17,8 @@ So far I skinned
 - NumericStepper (ripple animation added)
 - Radiobutton (animations added) 
 - Raised Button (animations added)
+- Rounded Button (animations added)
+- Rounded Hollow Button (animations added)
 - Toggle Switch (animations added)
 - Tabbedviewnavigator (ripple animation added, fade between tabs, also swipe effect on 3rd tab to demonstrate hiding tab and actionbar)
 - Textinput 

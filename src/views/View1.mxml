@@ -41,6 +41,8 @@
 			<s:NumericStepper horizontalCenter="0" verticalCenter="0" textAlign="center" interactionMode="touch"/>
 			<s:Button label="Raised" left="100" color="0xFFFFFF"/>
 			<s:Button label="Flat" left="100" color="0x000000" styleName="flat"/>
+			<s:Button label="Rounded" left="100" styleName="rounded"/>
+			<s:Button label="Rounded E" width="110" left="10" styleName="roundedempty" color="0x000000"/>
 			<s:Button left="100" color="0x000000" styleName="circle" icon="{overflowIcon}"/>
 			<s:Spacer height="10"/>
 			<s:RadioButton label="Radio" groupName="mygroup"/>

@@ -40,7 +40,6 @@ package spark.skins.android5
 		//  Variables
 		//
 		//--------------------------------------------------------------------------
-		protected var circleRadius:int;
 		
 		protected var cornerRadius:int;	
 		
@@ -75,46 +74,40 @@ package spark.skins.android5
 				case DPIClassification.DPI_640:
 				{			
 					layoutGap = 20;
-					
 					measuredDefaultWidth = 128;
 					measuredDefaultHeight = 144;
-					circleRadius = 80;
 					cornerRadius = 10;	
-					roundedCornerRadius=80;
+					roundedCornerRadius = 80;
 					dropShadowBlurX = 10;
 					dropShadowBlurY = 10;
 					dropShadowDistance = 5;
-					
+					layoutBorderSize = 4;
 					break;
 				}
 				case DPIClassification.DPI_480:
 				{		
 					layoutGap = 15;
-					
 					measuredDefaultWidth = 96;
 					measuredDefaultHeight = 108;
-					circleRadius = 60;
 					cornerRadius = 8;
-					roundedCornerRadius=60;
+					roundedCornerRadius = 60;
 					dropShadowBlurX = 8;
 					dropShadowBlurY = 8;
 					dropShadowDistance = 4;
-					
+					layoutBorderSize = 3;
 					break;
 				}
 				case DPIClassification.DPI_320:
 				{              
-					layoutGap = 10;
-					
+					layoutGap = 10;				
 					measuredDefaultWidth = 172;
 					measuredDefaultHeight = 72;
-					circleRadius = 40;
-					roundedCornerRadius=40;
+					roundedCornerRadius = 40;
 					cornerRadius = 6;
 					dropShadowBlurX = 6;
 					dropShadowBlurY = 6;
 					dropShadowDistance = 3;	
-					
+					layoutBorderSize = 2;
 					break;
 				}
 				case DPIClassification.DPI_240:
@@ -122,26 +115,25 @@ package spark.skins.android5
 					layoutGap = 7;
 					measuredDefaultWidth = 110;
 					measuredDefaultHeight = 45;
-					circleRadius = 30;
 					cornerRadius = 4;	
-					roundedCornerRadius=30;
+					roundedCornerRadius = 30;
 					dropShadowBlurX = 4;
 					dropShadowBlurY = 4;
 					dropShadowDistance = 2;
+					layoutBorderSize = 2;
 					break;
 				}
 				case DPIClassification.DPI_120:
 				{			
-					layoutGap = 4;
-					
+					layoutGap = 4;				
 					measuredDefaultWidth = 66;
 					measuredDefaultHeight = 27;
 					cornerRadius = 2;
-					
+					roundedCornerRadius = 15;
 					dropShadowBlurX = 2;
 					dropShadowBlurY = 2;
 					dropShadowDistance = 1;
-					
+					layoutBorderSize = 1;
 					break;
 				}
 				default:
@@ -151,11 +143,11 @@ package spark.skins.android5
 					measuredDefaultWidth = 88;
 					measuredDefaultHeight = 36;
 					cornerRadius = 3;
-					
+					roundedCornerRadius = 20;
 					dropShadowBlurX = 3;
 					dropShadowBlurY = 3;
 					dropShadowDistance = 1;
-					
+					layoutBorderSize = 1;
 					break;
 				}
 					
@@ -213,7 +205,6 @@ package spark.skins.android5
 			var downColor:uint = getStyle("downColor");
 			var downAlpha:Number = getStyle("downAlpha");
 			var backgroundAlphaValue:Number = getStyle("backgroundAlpha");
-			
 			if (getStyle("contentBackgroundBorder") == "raised")
 			{
 				if (currentState == "down")
@@ -275,6 +266,27 @@ package spark.skins.android5
 					dropShadow.alpha = dropShadowAlpha;
 					dropShadow.tlRadius = dropShadow.trRadius = dropShadow.blRadius = dropShadow.brRadius = roundedCornerRadius;
 					dropShadow.drawShadow(graphics, 0, 0, unscaledWidth, unscaledHeight); 
+					destroyRipples();
+				}
+			}
+			
+			if (getStyle("contentBackgroundBorder") == "roundedempty")
+			{
+				if (currentState == "down")
+				{	
+					//rectangle border and background
+					graphics.lineStyle(layoutBorderSize, downColor, 1);
+					graphics.beginFill(chromeColor, 0);
+					graphics.drawRoundRectComplex(0, 0, unscaledWidth, unscaledHeight, roundedCornerRadius, roundedCornerRadius, roundedCornerRadius, roundedCornerRadius);
+					graphics.endFill();
+				}
+				else
+				{
+					//rectangle border and background
+					graphics.lineStyle(layoutBorderSize, chromeColor, 1);
+					graphics.beginFill(chromeColor, 0);
+					graphics.drawRoundRectComplex(0, 0, unscaledWidth, unscaledHeight, roundedCornerRadius, roundedCornerRadius, roundedCornerRadius, roundedCornerRadius);
+					graphics.endFill();
 					destroyRipples();
 				}
 			}
